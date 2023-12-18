@@ -116,7 +116,7 @@ def visualize_instances_dict(
             inst_colour = type_colour[inst_info["type"]][1]
         else:
             inst_colour = (inst_rng_colors[idx]).tolist()
-        cv2.drawContours(overlay, [inst_contour], -1, inst_colour, line_thickness)
+        cv2.drawContours(overlay, [inst_contour], -1, tuple(int(el) for el in inst_colour), line_thickness)
 
         if draw_dot:
             inst_centroid = inst_info["centroid"]

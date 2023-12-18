@@ -130,7 +130,7 @@ if __name__ == '__main__':
             },
             'model_path' : args['model_path'],
         },
-        'type_info_path'  : None if args['type_info_path'] == '' \
+        'type_info_path'  : None if args['type_info_path'] == "''" \
                             else args['type_info_path'],
     }
 
