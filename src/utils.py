@@ -1,5 +1,10 @@
 import cv2
 import numpy as np
+from pathlib import Path
+import json
+import glob
+import os
+
 def get_contour_feats(cnt):
     """Get morphological features from input contours."""
 
@@ -52,3 +57,9 @@ def get_contour_feats(cnt):
         "ellipse-centre-x": EllipseCentre[0],
         "ellipse-centre-y": EllipseCentre[1],
     }
+
+def directory_samples(directory):
+    files = glob.glob(os.path.join(directory, '*.json'))
+    # Get the count of JSON files
+    count = len(files)
+    return count

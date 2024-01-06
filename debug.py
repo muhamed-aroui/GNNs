@@ -10,3 +10,5 @@ print(num_cells)
 for node_id, node_data in json_data['nuc'].items():
     print(f"node_id {node_id} node_data {node_data}")
     break
+if (1,2) == (2,1):
+    print("true")
