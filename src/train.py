@@ -28,8 +28,8 @@ class GModelTrainer:
         self._init_models()
 
     def _init_dataloaders(self):
-        self.dataloaders, self.classes, self.class_to_idx, node_features = get_data(self.config, self.logger)
-        self.config["data_config"]["node_features"] = node_features
+        self.dataloaders, node_features = get_data(self.config, self.logger)
+        #self.config["data_config"]["node_features"] = node_features
         self.config["data_config"]["num_classes"] = 2 #len(self.class_to_idx)
         self.num_batches = len(iter(self.dataloaders["train"]))
         self.logger.info(pformat(self.config))
@@ -163,8 +163,7 @@ class GModelTrainer:
         model_states = {'epoch': epoch,
                         'state_dict': weights,
                         'best_val_acc': val_acc,
-                        'test_acc': test_acc,
-                        'class_to_idx': self.class_to_idx}
+                        'test_acc': test_acc}
         torch.save(model_states, "./saved_model.pth")
 
     @staticmethod

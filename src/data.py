@@ -14,12 +14,11 @@ import logging
 
 
 class GraphDataset(Dataset):
-    def __init__(self, root,class_to_idx, transform=None,config = False):
+    def __init__(self, root, transform=None,config = False):
         super().__init__(root, transform,)
         self.root = Path(root)
         self.transform = transform
         self.config = config
-        self.class_to_idx = class_to_idx
     @property
     def raw_files_paths(self):
         return [s/"data.json" for s in self.root.iterdir()]
@@ -70,7 +69,7 @@ class GraphDataset(Dataset):
         graph_data = Data(x=graph_features, 
                           edge_index=edge_index.t().contiguous(),
                           edge_attr=torch.tensor(edge_features, dtype=torch.float),
-                          y = torch.tensor(self.class_to_idx.get(json_data["gt"], -1), dtype=torch.long))
+                          y = torch.tensor(json_data["label_int"], dtype=torch.long))
         return graph_data
     
     @staticmethod
@@ -97,15 +96,15 @@ def get_data(config, logger):
     logger.info(f"{len(train_samples)} graphs")
     logger.info(f"{len(validation_samples)} graphs")
     logger.info(f"{len(test_samples)} graphs")
-    classes = {
-        "train":train_classes,
-        "test": test_classes,
-        "validation": validation_classes
-    }
+    # classes = {
+    #     "train":train_classes,
+    #     "test": test_classes,
+    #     "validation": validation_classes
+    # }
 
-    train_dataset = GraphDataset(root=config["data_config"]["db_root"], config=config, class_to_idx=class_to_idx)
-    test_dataset = GraphDataset(root=config["data_config"]["test_root"], config=config, class_to_idx=class_to_idx)
-    validation_dataset = GraphDataset(root=config["data_config"]["validation_root"], config=config, class_to_idx=class_to_idx)
+    train_dataset = GraphDataset(root=config["data_config"]["db_root"], config=config)
+    test_dataset = GraphDataset(root=config["data_config"]["test_root"], config=config)
+    validation_dataset = GraphDataset(root=config["data_config"]["validation_root"], config=config)
     dataloaders = {
         x:DataLoader(dataset, 
                batch_size=config["training_config"]["batch_size"], 
@@ -115,7 +114,7 @@ def get_data(config, logger):
     }
     temp_data = next(iter(validation_dataset))
     
-    return dataloaders, classes, class_to_idx , temp_data.x.shape[1]
+    return dataloaders , temp_data.x.shape[1]
 
 if __name__ == "__main__":
     print("here")

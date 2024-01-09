@@ -24,10 +24,10 @@ model_config = dict(
 
 data_config = dict(
     evaluate        = False,
-    num_classes     = None,
-    db_root         = "path/train",
-    test_root       = "path/test",
-    validation_root = "path/val",
+    num_classes     = 2,
+    db_root         = "/users/Etu6/28718016/Data/BinaryClassification/train",
+    test_root       = "/users/Etu6/28718016/Data/BinaryClassification/val",
+    validation_root = "/users/Etu6/28718016/Data/BinaryClassification/val",
     normalize       = dict(l1 = False, l2= False)
 )
 
