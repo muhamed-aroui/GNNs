@@ -1,6 +1,8 @@
 import torch
 import time
 from data import get_data
+from torch.utils.tensorboard import SummaryWriter
+from models import get_model
 from pprint import pformat
 import torch.nn as nn
 import torch.optim as optim
@@ -28,7 +30,7 @@ class GModelTrainer:
     def _init_dataloaders(self):
         self.dataloaders, self.classes, self.class_to_idx, node_features = get_data(self.config, self.logger)
         self.config["data_config"]["node_features"] = node_features
-        self.config["data_config"]["num_classes"] = len(self.class_to_idx)
+        self.config["data_config"]["num_classes"] = 2 #len(self.class_to_idx)
         self.num_batches = len(iter(self.dataloaders["train"]))
         self.logger.info(pformat(self.config))
 

@@ -6,9 +6,11 @@ import numpy as np
 from configuration import config
 from torch_geometric.data import Dataset, Data
 from sklearn.preprocessing import normalize
+from torch_geometric.loader import DataLoader
 from utils import get_contour_feats, directory_samples
 import logging
-from configuration import config
+
+
 
 
 class GraphDataset(Dataset):
@@ -95,6 +97,25 @@ def get_data(config, logger):
     logger.info(f"{len(train_samples)} graphs")
     logger.info(f"{len(validation_samples)} graphs")
     logger.info(f"{len(test_samples)} graphs")
+    classes = {
+        "train":train_classes,
+        "test": test_classes,
+        "validation": validation_classes
+    }
+
+    train_dataset = GraphDataset(root=config["data_config"]["db_root"], config=config, class_to_idx=class_to_idx)
+    test_dataset = GraphDataset(root=config["data_config"]["test_root"], config=config, class_to_idx=class_to_idx)
+    validation_dataset = GraphDataset(root=config["data_config"]["validation_root"], config=config, class_to_idx=class_to_idx)
+    dataloaders = {
+        x:DataLoader(dataset, 
+               batch_size=config["training_config"]["batch_size"], 
+               num_workers=config["training_config"]["num_workers"],
+               pin_memory=True)
+        for x, dataset in [("train", train_dataset), ("validation", validation_dataset), ("test", test_dataset)]
+    }
+    temp_data = next(iter(validation_dataset))
+    
+    return dataloaders, classes, class_to_idx , temp_data.x.shape[1]
 
 if __name__ == "__main__":
     print("here")
