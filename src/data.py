@@ -21,7 +21,7 @@ class GraphDataset(Dataset):
         self.config = config
     @property
     def raw_files_paths(self):
-        return [s/"data.json" for s in self.root.iterdir()]
+        return [s for s in self.root.iterdir()]
 
     def _process_data(self, idx):
 
@@ -30,7 +30,7 @@ class GraphDataset(Dataset):
         
         graph_features = list()
         edge_features = list()
-        edge_indices = list()
+        edge_index = list()
 
         num_cells = len(json_data["nuc"])
         if num_cells == 0:
@@ -46,11 +46,11 @@ class GraphDataset(Dataset):
             # Extracting edge information (if any)
             for neighbor_node_id, neighbor_node_data in json_data['nuc'].items():
                 if node_id != neighbor_node_id:
-                    if [int(node_id) - 1, int(neighbor_node_id) - 1] in edge_indices:
+                    if [int(node_id) - 1, int(neighbor_node_id) - 1] in edge_index:
                         continue
 
-                    edge_indices.append([int(node_id) - 1, int(neighbor_node_id) - 1])  # Assuming nodes are 1-indexed
-                    edge_indices.append([int(neighbor_node_id) - 1, int(node_id) - 1])
+                    edge_index.append([int(node_id) - 1, int(neighbor_node_id) - 1])  # Assuming nodes are 1-indexed
+                    edge_index.append([int(neighbor_node_id) - 1, int(node_id) - 1])
                     
                     _feat = self._edge_feature_gen(node_data["centroid"],
                                                      neighbor_node_data["centroid"])
@@ -64,12 +64,12 @@ class GraphDataset(Dataset):
             graph_features = normalize(graph_features, norm="l2")
         graph_features = torch.tensor(graph_features, dtype=torch.float)
 
-        edge_index = []
+        edge_index = torch.tensor(edge_index, dtype=torch.long)
 
         graph_data = Data(x=graph_features, 
                           edge_index=edge_index.t().contiguous(),
                           edge_attr=torch.tensor(edge_features, dtype=torch.float),
-                          y = torch.tensor(json_data["label_int"], dtype=torch.long))
+                          y = torch.tensor(json_data["label_int"], dtype=torch.float))
         return graph_data
     
     @staticmethod
@@ -93,9 +93,9 @@ def get_data(config, logger):
     test_samples = directory_samples(config["data_config"]["test_root"])
     validation_samples = directory_samples(config["data_config"]["validation_root"])
     
-    logger.info(f"{len(train_samples)} graphs")
-    logger.info(f"{len(validation_samples)} graphs")
-    logger.info(f"{len(test_samples)} graphs")
+    logger.info(f"{train_samples} graphs")
+    logger.info(f"{validation_samples} graphs")
+    logger.info(f"{test_samples} graphs")
     # classes = {
     #     "train":train_classes,
     #     "test": test_classes,

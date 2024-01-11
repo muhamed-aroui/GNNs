@@ -1,7 +1,7 @@
 import torch
 import time
 from data import get_data
-from torch.utils.tensorboard import SummaryWriter
+#from torch.utils.tensorboard import SummaryWriter
 from models import get_model
 from pprint import pformat
 import torch.nn as nn
@@ -23,19 +23,20 @@ class GModelTrainer:
         # self.writer = SummaryWriter()
         self.best_acc = dict(train=0.0, validation=0.0, test=0.0)
         self._init_dataloaders()
+        self._init_models()
         self._init_loss()
         self._init_optim()
-        self._init_models()
+        
 
     def _init_dataloaders(self):
         self.dataloaders, node_features = get_data(self.config, self.logger)
-        #self.config["data_config"]["node_features"] = node_features
-        self.config["data_config"]["num_classes"] = 2 #len(self.class_to_idx)
+        self.config["data_config"]["node_features"] = node_features
+        self.config["data_config"]["num_classes"] = 1 #len(self.class_to_idx)
         self.num_batches = len(iter(self.dataloaders["train"]))
         self.logger.info(pformat(self.config))
 
     def _init_loss(self):
-        self.criterion = torch.nn.CrossEntropyLoss(ignore_index=-1) # binary classification
+        self.criterion = torch.nn.BCEWithLogitsLoss() #torch.nn.CrossEntropyLoss(ignore_index=-1) # binary classification
 
     def _init_optim(self):
         optim_params = [{'params': self.model.parameters(),
@@ -56,7 +57,9 @@ class GModelTrainer:
     
     def _init_models(self):
         self.model = get_model(self.config, self.logger)
-        if self.gpu_count > 1:
+        self.model = self.model.to(self.device)
+        self.logger.info("Using 1 GPU")
+        """if self.gpu_count > 1:
             self.model = nn.DataParallel(
                 self.model).to(self.device)
             self.logger.info("Using "+ str(self.gpu_count) + " GPUs: ")
@@ -65,7 +68,7 @@ class GModelTrainer:
             if self.gpu_count ==1:
                 self.logger.info("Using 1 GPU")
             else:
-                self.logger.info("Using CPU")
+                self.logger.info("Using CPU")"""
         
         self.logger.info(pformat(self.model))
 
@@ -84,6 +87,7 @@ class GModelTrainer:
     
     def _pass(self, data, phase="val"):
         out = self.model(data.x, data.edge_index, data.batch)
+        out = out.squeeze()
         loss_value = self.criterion(out, data.y)
         if phase =="train":
             loss_value.backward()
@@ -118,7 +122,8 @@ class GModelTrainer:
                 self.best_acc['test'] = test_acc
                 self.best_acc['train'] = avg_top1.value
                 self.best_acc['epoch'] = epoch
-                self.save_model(epoch=epoch, val_acc=val_acc, test_acc=test_acc)
+                
+                #self.save_model(epoch=epoch, val_acc=val_acc, test_acc=test_acc)
                 early_stopping_counter = 0
             else:
                 early_stopping_counter += 1
@@ -168,6 +173,7 @@ class GModelTrainer:
 
     @staticmethod
     def cls_accuracy(output, target):
+        output= torch.nn.functional.sigmoid(output)
         pred = output.round()
         correct = (pred == target).float().sum()
         accuracy = correct / target.size(0)

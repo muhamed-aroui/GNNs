@@ -7,7 +7,7 @@ import os
 
 def get_contour_feats(cnt):
     """Get morphological features from input contours."""
-
+    cnt = np.array(cnt)
     # calculate some things useful later:
     m = cv2.moments(cnt)
 
@@ -31,8 +31,8 @@ def get_contour_feats(cnt):
     ConvexArea = cv2.contourArea(ConvexHull)
     # Solidity := Area/ConvexArea
     Solidity = Area / ConvexArea
-
-    # ELLIPSE - determine best-fitting ellipse.
+    #there should be at least 5 points to fit the ellipse in function 'fitEllipseNoDirect'
+    """# ELLIPSE - determine best-fitting ellipse.
     centre, axes, angle = cv2.fitEllipse(cnt)
     MAJ = np.argmax(axes)  # this is MAJor axis, 1 or 0
     MIN = 1 - MAJ  # 0 or 1, MINor axis
@@ -41,7 +41,15 @@ def get_contour_feats(cnt):
     MinorAxisLength = axes[MIN]
     Eccentricity = np.sqrt(1 - (axes[MIN] / axes[MAJ]) ** 2)
     Orientation = angle
-    EllipseCentre = centre  # x,y
+    EllipseCentre = centre  # x,y"""
+    return {
+        "area": Area,
+        "perimeter": Perimeter,
+        "equiv-diameter": EquivDiameter,
+        "extent": Extent,
+        "convex-area": ConvexArea,
+        "solidity": Solidity
+    }
 
     return {
         "area": Area,

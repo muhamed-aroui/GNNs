@@ -1,6 +1,6 @@
 training_config = dict(
-    epoch = 10,
-    batch_size = 256,
+    epoch = 5,
+    batch_size = 4,
     num_workers = 4,
     log_iter = 1
 )
@@ -24,10 +24,10 @@ model_config = dict(
 
 data_config = dict(
     evaluate        = False,
-    num_classes     = 2,
-    db_root         = "/users/Etu6/28718016/Data/BinaryClassification/train/json",
-    test_root       = "/users/Etu6/28718016/Data/BinaryClassification/val/json",
-    validation_root = "/users/Etu6/28718016/Data/BinaryClassification/val/json",
+    num_classes     = 1,
+    db_root         =  '/users/Etu6/28718016/tinyData/train',#"/users/Etu6/28718016/Data/BinaryClassification/train/json",
+    test_root       =  "/users/Etu6/28718016/tinyData/val",#"/users/Etu6/28718016/Data/BinaryClassification/val/json",
+    validation_root =  '/users/Etu6/28718016/tinyData/val', #"/users/Etu6/28718016/Data/BinaryClassification/val/json",
     normalize       = dict(l1 = False, l2= False)
 )
 
