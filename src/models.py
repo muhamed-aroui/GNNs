@@ -11,7 +11,7 @@ class GCN(nn.Module):
         self.conv2 = GCNConv(embedding_size, embedding_size)
         self.conv3 = GCNConv(embedding_size, embedding_size)
         self.lin = nn.Linear(embedding_size, num_classes)
-        self.dropout = dropout
+        #self.dropout = dropout
 
     def forward(self, x, edge_index, batch):
         # 1. Obtain node embeddings 
@@ -25,7 +25,7 @@ class GCN(nn.Module):
         x = global_mean_pool(x, batch)  # [batch_size, hidden_channels]
 
         # 3. Apply a final classifier
-        x = F.dropout(x, p=self.dropout, training=self.training)
+        #x = F.dropout(x, p=self.dropout, training=self.training)
         x = self.lin(x)
         
         return x

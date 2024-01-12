@@ -1,7 +1,7 @@
 import torch
 import time
 from data import get_data
-#from torch.utils.tensorboard import SummaryWriter
+from torch.utils.tensorboard import SummaryWriter
 from models import get_model
 from pprint import pformat
 import torch.nn as nn
@@ -20,7 +20,7 @@ class GModelTrainer:
         self.logger.info(f"DEVICE : {self.device}")
         self.config = config
         self.epochs = self.config["training_config"]["epoch"]
-        # self.writer = SummaryWriter()
+        self.writer = SummaryWriter()
         self.best_acc = dict(train=0.0, validation=0.0, test=0.0)
         self._init_dataloaders()
         self._init_models()
@@ -31,12 +31,12 @@ class GModelTrainer:
     def _init_dataloaders(self):
         self.dataloaders, node_features = get_data(self.config, self.logger)
         self.config["data_config"]["node_features"] = node_features
-        self.config["data_config"]["num_classes"] = 1 #len(self.class_to_idx)
+        self.config["data_config"]["num_classes"] = 1 
         self.num_batches = len(iter(self.dataloaders["train"]))
         self.logger.info(pformat(self.config))
 
     def _init_loss(self):
-        self.criterion = torch.nn.BCEWithLogitsLoss() #torch.nn.CrossEntropyLoss(ignore_index=-1) # binary classification
+        self.criterion = torch.nn.BCEWithLogitsLoss()  # binary classification
 
     def _init_optim(self):
         optim_params = [{'params': self.model.parameters(),
@@ -77,6 +77,8 @@ class GModelTrainer:
         _epoch = f"EPOCH[{epoch+1}/{self.epochs}]"
         _loss = f"LOSS : {loss}"
         _top1 = f"TOP1 : {round(top1, 4)}"
+        self.writer.add_scalar(f'Accuracy/{phase}', top1, epoch)
+        self.writer.add_scalar(f'Loss/{phase}', loss, epoch)
         self.logger.info(f"{_phase:20s}{_epoch:20}{_loss:20s}{_top1:20s}")
     
     def _log_training(self, epoch, batch_idx, loss):
@@ -122,8 +124,7 @@ class GModelTrainer:
                 self.best_acc['test'] = test_acc
                 self.best_acc['train'] = avg_top1.value
                 self.best_acc['epoch'] = epoch
-                
-                #self.save_model(epoch=epoch, val_acc=val_acc, test_acc=test_acc)
+                self.save_model(epoch=epoch, val_acc=val_acc, test_acc=test_acc)
                 early_stopping_counter = 0
             else:
                 early_stopping_counter += 1
@@ -164,7 +165,7 @@ class GModelTrainer:
 
     def save_model(self, epoch, val_acc, test_acc):
         self.logger.info("Saving a new model")
-        weights = self.model.state_dict() if self.gpu_count <=1 else self.model.module.state_dict()
+        weights = self.model.state_dict() #if self.gpu_count <=1 else self.model.module.state_dict()
         model_states = {'epoch': epoch,
                         'state_dict': weights,
                         'best_val_acc': val_acc,

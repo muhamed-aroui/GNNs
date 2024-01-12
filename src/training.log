@@ -1,66 +1,1021 @@
-22:38:12:     DEVICE : cuda
-22:38:12:     8 graphs
-22:38:12:     8 graphs
-22:38:12:     8 graphs
-22:38:12:     {'data_config': {'db_root': '/users/Etu6/28718016/tinyData/train',
+00:54:56:     DEVICE : cuda
+00:54:56:     844 graphs
+00:54:56:     218 graphs
+00:54:56:     588 graphs
+00:55:14:     {'data_config': {'db_root': '/users/Etu6/28718016/Data/BinaryClassification/train/json',
                  'evaluate': False,
                  'node_features': 9,
                  'normalize': {'l1': False, 'l2': False},
                  'num_classes': 1,
-                 'test_root': '/users/Etu6/28718016/tinyData/val',
-                 'validation_root': '/users/Etu6/28718016/tinyData/val'},
+                 'test_root': '/users/Etu6/28718016/Data/BinaryClassification/test/json',
+                 'validation_root': '/users/Etu6/28718016/Data/BinaryClassification/val/json'},
  'model_config': {'dropout': 0.6,
                   'embedding_size': 512,
                   'heads': 4,
                   'layer_type': 'GCN'},
- 'optim_config': {'lr': 0.0003, 'optim': 'adam'},
- 'training_config': {'batch_size': 4,
-                     'epoch': 5,
+ 'optim_config': {'lr': 0.0003, 'optim': 'sgd'},
+ 'training_config': {'batch_size': 64,
+                     'epoch': 200,
                      'log_iter': 1,
                      'num_workers': 4},
  'validation_config': {'early_stopping_epoch': 50,
                        'test_accuracy_log_epoch': 1}}
-22:38:14:     Using 1 GPU
-22:38:14:     GCN(
+00:55:16:     Using 1 GPU
+00:55:16:     GCN(
   (conv1): GCNConv(9, 512)
   (conv2): GCNConv(512, 512)
   (conv3): GCNConv(512, 512)
   (lin): Linear(in_features=512, out_features=1, bias=True)
 )
-22:38:15:     EPOCH[1/5]     ITER[1/2]                     TRAIN_LOSS : 7.823885440826416
-22:38:15:     EPOCH[1/5]     ITER[2/2]                     TRAIN_LOSS : 62.01373291015625
-22:38:15:     
-22:38:15:     TRAIN               EPOCH[1/5]          LOSS : 34.91880918  TOP1 : 0.25         
-22:38:16:     VALIDATION          EPOCH[1/5]          LOSS : 19.80482769  TOP1 : 0.5          
-22:38:16:     
-22:38:17:     EPOCH[2/5]     ITER[1/2]                     TRAIN_LOSS : 2.637366378621664e-05
-22:38:17:     EPOCH[2/5]     ITER[2/2]                     TRAIN_LOSS : 6.567671298980713
-22:38:17:     
-22:38:17:     TRAIN               EPOCH[2/5]          LOSS : 19.10132901  TOP1 : 0.5          
-22:38:18:     VALIDATION          EPOCH[2/5]          LOSS : 5.93419635   TOP1 : 0.5          
-22:38:20:     TEST                EPOCH[2/5]          LOSS : 5.93419433   TOP1 : 0.5          
-22:38:20:     
-22:38:20:     EPOCH[3/5]     ITER[1/2]                     TRAIN_LOSS : 30.02117347717285
-22:38:21:     EPOCH[3/5]     ITER[2/2]                     TRAIN_LOSS : 0.06915251165628433
-22:38:21:     
-22:38:21:     TRAIN               EPOCH[3/5]          LOSS : 17.74927367  TOP1 : 0.5          
-22:38:22:     VALIDATION          EPOCH[3/5]          LOSS : 6.56517863   TOP1 : 0.5          
-22:38:24:     TEST                EPOCH[3/5]          LOSS : 6.56517839   TOP1 : 0.5          
-22:38:24:     
-22:38:24:     EPOCH[4/5]     ITER[1/2]                     TRAIN_LOSS : 14.662630081176758
-22:38:24:     EPOCH[4/5]     ITER[2/2]                     TRAIN_LOSS : 6.19528865814209
-22:38:24:     
-22:38:24:     TRAIN               EPOCH[4/5]          LOSS : 15.91919509  TOP1 : 0.4375       
-22:38:26:     VALIDATION          EPOCH[4/5]          LOSS : 0.4456967    TOP1 : 0.75         
-22:38:27:     TEST                EPOCH[4/5]          LOSS : 0.44569746   TOP1 : 0.75         
-22:38:27:     
-22:38:28:     EPOCH[5/5]     ITER[1/2]                     TRAIN_LOSS : 16.033708572387695
-22:38:28:     EPOCH[5/5]     ITER[2/2]                     TRAIN_LOSS : 12.891125679016113
-22:38:28:     
-22:38:28:     TRAIN               EPOCH[5/5]          LOSS : 15.6278395   TOP1 : 0.45         
-22:38:29:     VALIDATION          EPOCH[5/5]          LOSS : 10.96706128  TOP1 : 0.5          
-22:38:31:     TEST                EPOCH[5/5]          LOSS : 10.96706271  TOP1 : 0.5          
-22:38:31:     
-22:38:31:     AT EPOCH 3/5: BEST VAL ACCURACY: 0.75      TEST ACC : 0.75     TRAIN ACC : 0.4375 
-22:38:31:     Training took 0.0h : 0.0m : 19.1s
-22:38:31:     Finish
+00:55:58:     EPOCH[1/200]   ITER[1/14]                    TRAIN_LOSS : 11.741215705871582
+00:55:58:     EPOCH[1/200]   ITER[2/14]                    TRAIN_LOSS : 19.8841609954834
+00:55:58:     EPOCH[1/200]   ITER[3/14]                    TRAIN_LOSS : 13.887794494628906
+00:55:58:     EPOCH[1/200]   ITER[4/14]                    TRAIN_LOSS : 67.79043579101562
+00:56:14:     EPOCH[1/200]   ITER[5/14]                    TRAIN_LOSS : 6.789029121398926
+00:56:14:     EPOCH[1/200]   ITER[6/14]                    TRAIN_LOSS : 32.63365173339844
+00:56:14:     EPOCH[1/200]   ITER[7/14]                    TRAIN_LOSS : 16.276241302490234
+00:56:14:     EPOCH[1/200]   ITER[8/14]                    TRAIN_LOSS : 7.203741073608398
+00:56:29:     EPOCH[1/200]   ITER[9/14]                    TRAIN_LOSS : 5.978476524353027
+00:56:29:     EPOCH[1/200]   ITER[10/14]                   TRAIN_LOSS : 4.9120588302612305
+00:56:29:     EPOCH[1/200]   ITER[11/14]                   TRAIN_LOSS : 4.040207386016846
+00:56:29:     EPOCH[1/200]   ITER[12/14]                   TRAIN_LOSS : 4.078134059906006
+00:56:42:     EPOCH[1/200]   ITER[13/14]                   TRAIN_LOSS : 4.2837910652160645
+00:56:42:     EPOCH[1/200]   ITER[14/14]                   TRAIN_LOSS : 3.5551395416259766
+00:56:42:     
+00:56:42:     TRAIN               EPOCH[1/200]        LOSS : 15.17842857  TOP1 : 0.5794       
+00:57:06:     VALIDATION          EPOCH[1/200]        LOSS : 3.51208719   TOP1 : 0.7064       
+00:57:06:     
+00:57:06:     Saving a new model
+00:57:48:     EPOCH[2/200]   ITER[1/14]                    TRAIN_LOSS : 3.734747886657715
+00:57:48:     EPOCH[2/200]   ITER[2/14]                    TRAIN_LOSS : 3.205115795135498
+00:57:48:     EPOCH[2/200]   ITER[3/14]                    TRAIN_LOSS : 2.166511058807373
+00:57:48:     EPOCH[2/200]   ITER[4/14]                    TRAIN_LOSS : 4.361213684082031
+00:58:05:     EPOCH[2/200]   ITER[5/14]                    TRAIN_LOSS : 1.8668149709701538
+00:58:05:     EPOCH[2/200]   ITER[6/14]                    TRAIN_LOSS : 3.1256680488586426
+00:58:05:     EPOCH[2/200]   ITER[7/14]                    TRAIN_LOSS : 2.5102078914642334
+00:58:05:     EPOCH[2/200]   ITER[8/14]                    TRAIN_LOSS : 3.825990676879883
+00:58:19:     EPOCH[2/200]   ITER[9/14]                    TRAIN_LOSS : 2.6347885131835938
+00:58:19:     EPOCH[2/200]   ITER[10/14]                   TRAIN_LOSS : 2.7364678382873535
+00:58:19:     EPOCH[2/200]   ITER[11/14]                   TRAIN_LOSS : 1.573361873626709
+00:58:19:     EPOCH[2/200]   ITER[12/14]                   TRAIN_LOSS : 1.8559447526931763
+00:58:33:     EPOCH[2/200]   ITER[13/14]                   TRAIN_LOSS : 1.6016281843185425
+00:58:33:     EPOCH[2/200]   ITER[14/14]                   TRAIN_LOSS : 2.6044797897338867
+00:58:33:     
+00:58:33:     TRAIN               EPOCH[2/200]        LOSS : 8.94226836   TOP1 : 0.5918       
+00:58:56:     VALIDATION          EPOCH[2/200]        LOSS : 1.5476513    TOP1 : 0.7064       
+01:00:05:     TEST                EPOCH[2/200]        LOSS : 2.14436163   TOP1 : 0.6276       
+01:00:05:     
+01:00:47:     EPOCH[3/200]   ITER[1/14]                    TRAIN_LOSS : 1.961376667022705
+01:00:47:     EPOCH[3/200]   ITER[2/14]                    TRAIN_LOSS : 1.5566108226776123
+01:00:47:     EPOCH[3/200]   ITER[3/14]                    TRAIN_LOSS : 1.2880163192749023
+01:00:47:     EPOCH[3/200]   ITER[4/14]                    TRAIN_LOSS : 1.7776846885681152
+01:01:03:     EPOCH[3/200]   ITER[5/14]                    TRAIN_LOSS : 1.4474844932556152
+01:01:03:     EPOCH[3/200]   ITER[6/14]                    TRAIN_LOSS : 1.3441096544265747
+01:01:03:     EPOCH[3/200]   ITER[7/14]                    TRAIN_LOSS : 1.1480448246002197
+01:01:03:     EPOCH[3/200]   ITER[8/14]                    TRAIN_LOSS : 1.2635958194732666
+01:01:18:     EPOCH[3/200]   ITER[9/14]                    TRAIN_LOSS : 1.296379566192627
+01:01:18:     EPOCH[3/200]   ITER[10/14]                   TRAIN_LOSS : 1.555920124053955
+01:01:18:     EPOCH[3/200]   ITER[11/14]                   TRAIN_LOSS : 1.1415306329727173
+01:01:18:     EPOCH[3/200]   ITER[12/14]                   TRAIN_LOSS : 0.8322809934616089
+01:01:31:     EPOCH[3/200]   ITER[13/14]                   TRAIN_LOSS : 1.1013147830963135
+01:01:31:     EPOCH[3/200]   ITER[14/14]                   TRAIN_LOSS : 0.9660434722900391
+01:01:31:     
+01:01:31:     TRAIN               EPOCH[3/200]        LOSS : 6.41384671   TOP1 : 0.5979       
+01:01:55:     VALIDATION          EPOCH[3/200]        LOSS : 0.71402473   TOP1 : 0.4633       
+01:03:03:     TEST                EPOCH[3/200]        LOSS : 0.69033338   TOP1 : 0.5255       
+01:03:03:     
+01:03:46:     EPOCH[4/200]   ITER[1/14]                    TRAIN_LOSS : 1.4029958248138428
+01:03:46:     EPOCH[4/200]   ITER[2/14]                    TRAIN_LOSS : 0.8511725068092346
+01:03:46:     EPOCH[4/200]   ITER[3/14]                    TRAIN_LOSS : 1.023406982421875
+01:03:46:     EPOCH[4/200]   ITER[4/14]                    TRAIN_LOSS : 0.7521733045578003
+01:04:02:     EPOCH[4/200]   ITER[5/14]                    TRAIN_LOSS : 0.8564557433128357
+01:04:02:     EPOCH[4/200]   ITER[6/14]                    TRAIN_LOSS : 0.9795210361480713
+01:04:02:     EPOCH[4/200]   ITER[7/14]                    TRAIN_LOSS : 0.7813771367073059
+01:04:02:     EPOCH[4/200]   ITER[8/14]                    TRAIN_LOSS : 0.7654021382331848
+01:04:17:     EPOCH[4/200]   ITER[9/14]                    TRAIN_LOSS : 0.6748290061950684
+01:04:17:     EPOCH[4/200]   ITER[10/14]                   TRAIN_LOSS : 0.8627766370773315
+01:04:17:     EPOCH[4/200]   ITER[11/14]                   TRAIN_LOSS : 0.8060433864593506
+01:04:17:     EPOCH[4/200]   ITER[12/14]                   TRAIN_LOSS : 0.8331449031829834
+01:04:30:     EPOCH[4/200]   ITER[13/14]                   TRAIN_LOSS : 0.8492429256439209
+01:04:30:     EPOCH[4/200]   ITER[14/14]                   TRAIN_LOSS : 0.6302639245986938
+01:04:30:     
+01:04:30:     TRAIN               EPOCH[4/200]        LOSS : 5.0294697    TOP1 : 0.5969       
+01:04:53:     VALIDATION          EPOCH[4/200]        LOSS : 0.58678377   TOP1 : 0.7064       
+01:06:03:     TEST                EPOCH[4/200]        LOSS : 0.67568489   TOP1 : 0.6276       
+01:06:03:     
+01:06:45:     EPOCH[5/200]   ITER[1/14]                    TRAIN_LOSS : 0.781769871711731
+01:06:45:     EPOCH[5/200]   ITER[2/14]                    TRAIN_LOSS : 0.6711368560791016
+01:06:45:     EPOCH[5/200]   ITER[3/14]                    TRAIN_LOSS : 0.8062496781349182
+01:06:45:     EPOCH[5/200]   ITER[4/14]                    TRAIN_LOSS : 0.6545426249504089
+01:07:01:     EPOCH[5/200]   ITER[5/14]                    TRAIN_LOSS : 0.5319697260856628
+01:07:01:     EPOCH[5/200]   ITER[6/14]                    TRAIN_LOSS : 0.7247968316078186
+01:07:01:     EPOCH[5/200]   ITER[7/14]                    TRAIN_LOSS : 0.6552261710166931
+01:07:01:     EPOCH[5/200]   ITER[8/14]                    TRAIN_LOSS : 0.5749276280403137
+01:07:15:     EPOCH[5/200]   ITER[9/14]                    TRAIN_LOSS : 0.6756240129470825
+01:07:15:     EPOCH[5/200]   ITER[10/14]                   TRAIN_LOSS : 0.9020184278488159
+01:07:15:     EPOCH[5/200]   ITER[11/14]                   TRAIN_LOSS : 0.623475193977356
+01:07:16:     EPOCH[5/200]   ITER[12/14]                   TRAIN_LOSS : 0.6520723104476929
+01:07:29:     EPOCH[5/200]   ITER[13/14]                   TRAIN_LOSS : 0.780003547668457
+01:07:29:     EPOCH[5/200]   ITER[14/14]                   TRAIN_LOSS : 0.7152889966964722
+01:07:29:     
+01:07:29:     TRAIN               EPOCH[5/200]        LOSS : 4.16261545   TOP1 : 0.6073       
+01:07:52:     VALIDATION          EPOCH[5/200]        LOSS : 0.61753331   TOP1 : 0.7064       
+01:09:01:     TEST                EPOCH[5/200]        LOSS : 0.65414074   TOP1 : 0.6276       
+01:09:01:     
+01:09:42:     EPOCH[6/200]   ITER[1/14]                    TRAIN_LOSS : 0.704572319984436
+01:09:42:     EPOCH[6/200]   ITER[2/14]                    TRAIN_LOSS : 0.6478271484375
+01:09:43:     EPOCH[6/200]   ITER[3/14]                    TRAIN_LOSS : 0.7198688983917236
+01:09:43:     EPOCH[6/200]   ITER[4/14]                    TRAIN_LOSS : 0.6704745292663574
+01:09:59:     EPOCH[6/200]   ITER[5/14]                    TRAIN_LOSS : 0.5893011093139648
+01:09:59:     EPOCH[6/200]   ITER[6/14]                    TRAIN_LOSS : 0.7383836507797241
+01:09:59:     EPOCH[6/200]   ITER[7/14]                    TRAIN_LOSS : 0.6919221878051758
+01:09:59:     EPOCH[6/200]   ITER[8/14]                    TRAIN_LOSS : 0.532304584980011
+01:10:13:     EPOCH[6/200]   ITER[9/14]                    TRAIN_LOSS : 0.6942272186279297
+01:10:13:     EPOCH[6/200]   ITER[10/14]                   TRAIN_LOSS : 0.6627084016799927
+01:10:13:     EPOCH[6/200]   ITER[11/14]                   TRAIN_LOSS : 0.6486072540283203
+01:10:13:     EPOCH[6/200]   ITER[12/14]                   TRAIN_LOSS : 0.6318268775939941
+01:10:26:     EPOCH[6/200]   ITER[13/14]                   TRAIN_LOSS : 0.7425071001052856
+01:10:26:     EPOCH[6/200]   ITER[14/14]                   TRAIN_LOSS : 0.6030990481376648
+01:10:27:     
+01:10:27:     TRAIN               EPOCH[6/200]        LOSS : 3.57990608   TOP1 : 0.6149       
+01:10:50:     VALIDATION          EPOCH[6/200]        LOSS : 0.59787905   TOP1 : 0.6927       
+01:11:59:     TEST                EPOCH[6/200]        LOSS : 0.66772949   TOP1 : 0.6122       
+01:11:59:     
+01:12:41:     EPOCH[7/200]   ITER[1/14]                    TRAIN_LOSS : 0.600425124168396
+01:12:41:     EPOCH[7/200]   ITER[2/14]                    TRAIN_LOSS : 0.5977201461791992
+01:12:41:     EPOCH[7/200]   ITER[3/14]                    TRAIN_LOSS : 0.6719694137573242
+01:12:41:     EPOCH[7/200]   ITER[4/14]                    TRAIN_LOSS : 0.6216456890106201
+01:12:57:     EPOCH[7/200]   ITER[5/14]                    TRAIN_LOSS : 0.5561319589614868
+01:12:57:     EPOCH[7/200]   ITER[6/14]                    TRAIN_LOSS : 0.6552076935768127
+01:12:57:     EPOCH[7/200]   ITER[7/14]                    TRAIN_LOSS : 0.675430178642273
+01:12:57:     EPOCH[7/200]   ITER[8/14]                    TRAIN_LOSS : 0.5287836790084839
+01:13:11:     EPOCH[7/200]   ITER[9/14]                    TRAIN_LOSS : 0.6017686128616333
+01:13:11:     EPOCH[7/200]   ITER[10/14]                   TRAIN_LOSS : 0.6569271087646484
+01:13:11:     EPOCH[7/200]   ITER[11/14]                   TRAIN_LOSS : 0.5197747945785522
+01:13:12:     EPOCH[7/200]   ITER[12/14]                   TRAIN_LOSS : 0.6174131631851196
+01:13:25:     EPOCH[7/200]   ITER[13/14]                   TRAIN_LOSS : 0.6769461631774902
+01:13:25:     EPOCH[7/200]   ITER[14/14]                   TRAIN_LOSS : 0.7651677131652832
+01:13:25:     
+01:13:25:     TRAIN               EPOCH[7/200]        LOSS : 3.15649214   TOP1 : 0.6247       
+01:13:48:     VALIDATION          EPOCH[7/200]        LOSS : 0.60151102   TOP1 : 0.7064       
+01:14:57:     TEST                EPOCH[7/200]        LOSS : 0.65043784   TOP1 : 0.6276       
+01:14:57:     
+01:15:39:     EPOCH[8/200]   ITER[1/14]                    TRAIN_LOSS : 0.6337224841117859
+01:15:39:     EPOCH[8/200]   ITER[2/14]                    TRAIN_LOSS : 0.6101076602935791
+01:15:39:     EPOCH[8/200]   ITER[3/14]                    TRAIN_LOSS : 0.6690583825111389
+01:15:39:     EPOCH[8/200]   ITER[4/14]                    TRAIN_LOSS : 0.6461033821105957
+01:15:55:     EPOCH[8/200]   ITER[5/14]                    TRAIN_LOSS : 0.6089134216308594
+01:15:55:     EPOCH[8/200]   ITER[6/14]                    TRAIN_LOSS : 0.6458697319030762
+01:15:55:     EPOCH[8/200]   ITER[7/14]                    TRAIN_LOSS : 0.6787513494491577
+01:15:55:     EPOCH[8/200]   ITER[8/14]                    TRAIN_LOSS : 0.5184756517410278
+01:16:10:     EPOCH[8/200]   ITER[9/14]                    TRAIN_LOSS : 0.62639319896698
+01:16:10:     EPOCH[8/200]   ITER[10/14]                   TRAIN_LOSS : 0.6470762491226196
+01:16:10:     EPOCH[8/200]   ITER[11/14]                   TRAIN_LOSS : 0.5593581199645996
+01:16:10:     EPOCH[8/200]   ITER[12/14]                   TRAIN_LOSS : 0.6169264316558838
+01:16:23:     EPOCH[8/200]   ITER[13/14]                   TRAIN_LOSS : 0.7147554159164429
+01:16:23:     EPOCH[8/200]   ITER[14/14]                   TRAIN_LOSS : 0.7998430132865906
+01:16:23:     
+01:16:23:     TRAIN               EPOCH[8/200]        LOSS : 2.84084515   TOP1 : 0.632        
+01:16:46:     VALIDATION          EPOCH[8/200]        LOSS : 0.61258439   TOP1 : 0.7064       
+01:17:55:     TEST                EPOCH[8/200]        LOSS : 0.65063237   TOP1 : 0.6276       
+01:17:55:     
+01:18:38:     EPOCH[9/200]   ITER[1/14]                    TRAIN_LOSS : 0.634512722492218
+01:18:38:     EPOCH[9/200]   ITER[2/14]                    TRAIN_LOSS : 0.6145210862159729
+01:18:38:     EPOCH[9/200]   ITER[3/14]                    TRAIN_LOSS : 0.6772074103355408
+01:18:38:     EPOCH[9/200]   ITER[4/14]                    TRAIN_LOSS : 0.6333568096160889
+01:18:54:     EPOCH[9/200]   ITER[5/14]                    TRAIN_LOSS : 0.6179095506668091
+01:18:54:     EPOCH[9/200]   ITER[6/14]                    TRAIN_LOSS : 0.6690266132354736
+01:18:54:     EPOCH[9/200]   ITER[7/14]                    TRAIN_LOSS : 0.6425283551216125
+01:18:54:     EPOCH[9/200]   ITER[8/14]                    TRAIN_LOSS : 0.5239436626434326
+01:19:09:     EPOCH[9/200]   ITER[9/14]                    TRAIN_LOSS : 0.6432528495788574
+01:19:09:     EPOCH[9/200]   ITER[10/14]                   TRAIN_LOSS : 0.641791582107544
+01:19:09:     EPOCH[9/200]   ITER[11/14]                   TRAIN_LOSS : 0.5714381337165833
+01:19:09:     EPOCH[9/200]   ITER[12/14]                   TRAIN_LOSS : 0.6376021504402161
+01:19:22:     EPOCH[9/200]   ITER[13/14]                   TRAIN_LOSS : 0.71533203125
+01:19:22:     EPOCH[9/200]   ITER[14/14]                   TRAIN_LOSS : 0.7405354380607605
+01:19:22:     
+01:19:22:     TRAIN               EPOCH[9/200]        LOSS : 2.59564349   TOP1 : 0.6359       
+01:19:46:     VALIDATION          EPOCH[9/200]        LOSS : 0.59360823   TOP1 : 0.7064       
+01:20:54:     TEST                EPOCH[9/200]        LOSS : 0.67600906   TOP1 : 0.6276       
+01:20:54:     
+01:21:37:     EPOCH[10/200]  ITER[1/14]                    TRAIN_LOSS : 0.6070707440376282
+01:21:37:     EPOCH[10/200]  ITER[2/14]                    TRAIN_LOSS : 0.6498209834098816
+01:21:37:     EPOCH[10/200]  ITER[3/14]                    TRAIN_LOSS : 0.6253346800804138
+01:21:37:     EPOCH[10/200]  ITER[4/14]                    TRAIN_LOSS : 0.5656310319900513
+01:21:53:     EPOCH[10/200]  ITER[5/14]                    TRAIN_LOSS : 0.623544454574585
+01:21:53:     EPOCH[10/200]  ITER[6/14]                    TRAIN_LOSS : 0.6261551380157471
+01:21:53:     EPOCH[10/200]  ITER[7/14]                    TRAIN_LOSS : 0.5867900848388672
+01:21:53:     EPOCH[10/200]  ITER[8/14]                    TRAIN_LOSS : 0.59706050157547
+01:22:08:     EPOCH[10/200]  ITER[9/14]                    TRAIN_LOSS : 0.6038134098052979
+01:22:08:     EPOCH[10/200]  ITER[10/14]                   TRAIN_LOSS : 0.5975193977355957
+01:22:08:     EPOCH[10/200]  ITER[11/14]                   TRAIN_LOSS : 0.5367826223373413
+01:22:08:     EPOCH[10/200]  ITER[12/14]                   TRAIN_LOSS : 0.6277945041656494
+01:22:21:     EPOCH[10/200]  ITER[13/14]                   TRAIN_LOSS : 0.6634834408760071
+01:22:21:     EPOCH[10/200]  ITER[14/14]                   TRAIN_LOSS : 0.6380256414413452
+01:22:21:     
+01:22:21:     TRAIN               EPOCH[10/200]       LOSS : 2.3969734    TOP1 : 0.6405       
+01:22:45:     VALIDATION          EPOCH[10/200]       LOSS : 0.59601341   TOP1 : 0.7064       
+01:23:54:     TEST                EPOCH[10/200]       LOSS : 0.66269948   TOP1 : 0.6276       
+01:23:54:     
+01:24:36:     EPOCH[11/200]  ITER[1/14]                    TRAIN_LOSS : 0.6164968013763428
+01:24:36:     EPOCH[11/200]  ITER[2/14]                    TRAIN_LOSS : 0.6087466478347778
+01:24:36:     EPOCH[11/200]  ITER[3/14]                    TRAIN_LOSS : 0.6297618746757507
+01:24:36:     EPOCH[11/200]  ITER[4/14]                    TRAIN_LOSS : 0.635543704032898
+01:24:53:     EPOCH[11/200]  ITER[5/14]                    TRAIN_LOSS : 0.5891493558883667
+01:24:53:     EPOCH[11/200]  ITER[6/14]                    TRAIN_LOSS : 0.6192982196807861
+01:24:53:     EPOCH[11/200]  ITER[7/14]                    TRAIN_LOSS : 0.6184073686599731
+01:24:53:     EPOCH[11/200]  ITER[8/14]                    TRAIN_LOSS : 0.5133069753646851
+01:25:07:     EPOCH[11/200]  ITER[9/14]                    TRAIN_LOSS : 0.6456875801086426
+01:25:07:     EPOCH[11/200]  ITER[10/14]                   TRAIN_LOSS : 0.6322072744369507
+01:25:07:     EPOCH[11/200]  ITER[11/14]                   TRAIN_LOSS : 0.5352747440338135
+01:25:07:     EPOCH[11/200]  ITER[12/14]                   TRAIN_LOSS : 0.611621618270874
+01:25:21:     EPOCH[11/200]  ITER[13/14]                   TRAIN_LOSS : 0.6952115297317505
+01:25:21:     EPOCH[11/200]  ITER[14/14]                   TRAIN_LOSS : 0.7183300256729126
+01:25:21:     
+01:25:21:     TRAIN               EPOCH[11/200]       LOSS : 2.23480409   TOP1 : 0.6452       
+01:25:44:     VALIDATION          EPOCH[11/200]       LOSS : 0.59292414   TOP1 : 0.7064       
+01:26:53:     TEST                EPOCH[11/200]       LOSS : 0.660311     TOP1 : 0.6276       
+01:26:53:     
+01:27:35:     EPOCH[12/200]  ITER[1/14]                    TRAIN_LOSS : 0.5661081075668335
+01:27:35:     EPOCH[12/200]  ITER[2/14]                    TRAIN_LOSS : 0.6258411407470703
+01:27:35:     EPOCH[12/200]  ITER[3/14]                    TRAIN_LOSS : 0.6996749639511108
+01:27:35:     EPOCH[12/200]  ITER[4/14]                    TRAIN_LOSS : 0.6323301196098328
+01:27:52:     EPOCH[12/200]  ITER[5/14]                    TRAIN_LOSS : 0.5931776762008667
+01:27:52:     EPOCH[12/200]  ITER[6/14]                    TRAIN_LOSS : 0.6396486759185791
+01:27:52:     EPOCH[12/200]  ITER[7/14]                    TRAIN_LOSS : 0.60304856300354
+01:27:52:     EPOCH[12/200]  ITER[8/14]                    TRAIN_LOSS : 0.5671813488006592
+01:28:06:     EPOCH[12/200]  ITER[9/14]                    TRAIN_LOSS : 0.6192361116409302
+01:28:06:     EPOCH[12/200]  ITER[10/14]                   TRAIN_LOSS : 0.6744682788848877
+01:28:06:     EPOCH[12/200]  ITER[11/14]                   TRAIN_LOSS : 0.5989183783531189
+01:28:06:     EPOCH[12/200]  ITER[12/14]                   TRAIN_LOSS : 0.6124153137207031
+01:28:20:     EPOCH[12/200]  ITER[13/14]                   TRAIN_LOSS : 0.6798455119132996
+01:28:20:     EPOCH[12/200]  ITER[14/14]                   TRAIN_LOSS : 0.598507285118103
+01:28:20:     
+01:28:20:     TRAIN               EPOCH[12/200]       LOSS : 2.10053954   TOP1 : 0.6478       
+01:28:43:     VALIDATION          EPOCH[12/200]       LOSS : 0.59295756   TOP1 : 0.7064       
+01:29:51:     TEST                EPOCH[12/200]       LOSS : 0.66417462   TOP1 : 0.6276       
+01:29:51:     
+01:30:34:     EPOCH[13/200]  ITER[1/14]                    TRAIN_LOSS : 0.612615704536438
+01:30:34:     EPOCH[13/200]  ITER[2/14]                    TRAIN_LOSS : 0.6252461075782776
+01:30:34:     EPOCH[13/200]  ITER[3/14]                    TRAIN_LOSS : 0.6577264070510864
+01:30:34:     EPOCH[13/200]  ITER[4/14]                    TRAIN_LOSS : 0.5695982575416565
+01:30:50:     EPOCH[13/200]  ITER[5/14]                    TRAIN_LOSS : 0.5902688503265381
+01:30:50:     EPOCH[13/200]  ITER[6/14]                    TRAIN_LOSS : 0.6640602946281433
+01:30:50:     EPOCH[13/200]  ITER[7/14]                    TRAIN_LOSS : 0.5918762683868408
+01:30:50:     EPOCH[13/200]  ITER[8/14]                    TRAIN_LOSS : 0.5652276873588562
+01:31:05:     EPOCH[13/200]  ITER[9/14]                    TRAIN_LOSS : 0.6180711984634399
+01:31:05:     EPOCH[13/200]  ITER[10/14]                   TRAIN_LOSS : 0.635270357131958
+01:31:05:     EPOCH[13/200]  ITER[11/14]                   TRAIN_LOSS : 0.5103958249092102
+01:31:05:     EPOCH[13/200]  ITER[12/14]                   TRAIN_LOSS : 0.5814449787139893
+01:31:18:     EPOCH[13/200]  ITER[13/14]                   TRAIN_LOSS : 0.6871785521507263
+01:31:18:     EPOCH[13/200]  ITER[14/14]                   TRAIN_LOSS : 0.6471766233444214
+01:31:18:     
+01:31:18:     TRAIN               EPOCH[13/200]       LOSS : 1.9858007    TOP1 : 0.6519       
+01:31:42:     VALIDATION          EPOCH[13/200]       LOSS : 0.59117892   TOP1 : 0.7064       
+01:32:51:     TEST                EPOCH[13/200]       LOSS : 0.66146938   TOP1 : 0.6276       
+01:32:51:     
+01:33:33:     EPOCH[14/200]  ITER[1/14]                    TRAIN_LOSS : 0.6353265047073364
+01:33:34:     EPOCH[14/200]  ITER[2/14]                    TRAIN_LOSS : 0.6306893825531006
+01:33:34:     EPOCH[14/200]  ITER[3/14]                    TRAIN_LOSS : 0.6289529204368591
+01:33:34:     EPOCH[14/200]  ITER[4/14]                    TRAIN_LOSS : 0.6163257360458374
+01:33:50:     EPOCH[14/200]  ITER[5/14]                    TRAIN_LOSS : 0.5801287889480591
+01:33:50:     EPOCH[14/200]  ITER[6/14]                    TRAIN_LOSS : 0.66099613904953
+01:33:50:     EPOCH[14/200]  ITER[7/14]                    TRAIN_LOSS : 0.6187679767608643
+01:33:50:     EPOCH[14/200]  ITER[8/14]                    TRAIN_LOSS : 0.5622676610946655
+01:34:05:     EPOCH[14/200]  ITER[9/14]                    TRAIN_LOSS : 0.6508890390396118
+01:34:05:     EPOCH[14/200]  ITER[10/14]                   TRAIN_LOSS : 0.6519086360931396
+01:34:05:     EPOCH[14/200]  ITER[11/14]                   TRAIN_LOSS : 0.5822589993476868
+01:34:05:     EPOCH[14/200]  ITER[12/14]                   TRAIN_LOSS : 0.6044488549232483
+01:34:18:     EPOCH[14/200]  ITER[13/14]                   TRAIN_LOSS : 0.6687136888504028
+01:34:19:     EPOCH[14/200]  ITER[14/14]                   TRAIN_LOSS : 0.6504778861999512
+01:34:19:     
+01:34:19:     TRAIN               EPOCH[14/200]       LOSS : 1.88844602   TOP1 : 0.6546       
+01:34:42:     VALIDATION          EPOCH[14/200]       LOSS : 0.59378521   TOP1 : 0.7064       
+01:35:51:     TEST                EPOCH[14/200]       LOSS : 0.66062571   TOP1 : 0.6276       
+01:35:51:     
+01:36:33:     EPOCH[15/200]  ITER[1/14]                    TRAIN_LOSS : 0.5941514372825623
+01:36:33:     EPOCH[15/200]  ITER[2/14]                    TRAIN_LOSS : 0.6061311960220337
+01:36:33:     EPOCH[15/200]  ITER[3/14]                    TRAIN_LOSS : 0.6456907391548157
+01:36:33:     EPOCH[15/200]  ITER[4/14]                    TRAIN_LOSS : 0.6248906850814819
+01:36:49:     EPOCH[15/200]  ITER[5/14]                    TRAIN_LOSS : 0.6141822934150696
+01:36:49:     EPOCH[15/200]  ITER[6/14]                    TRAIN_LOSS : 0.6235596537590027
+01:36:49:     EPOCH[15/200]  ITER[7/14]                    TRAIN_LOSS : 0.6097527742385864
+01:36:49:     EPOCH[15/200]  ITER[8/14]                    TRAIN_LOSS : 0.5082427263259888
+01:37:04:     EPOCH[15/200]  ITER[9/14]                    TRAIN_LOSS : 0.6425929069519043
+01:37:04:     EPOCH[15/200]  ITER[10/14]                   TRAIN_LOSS : 0.6472256183624268
+01:37:04:     EPOCH[15/200]  ITER[11/14]                   TRAIN_LOSS : 0.5532832145690918
+01:37:04:     EPOCH[15/200]  ITER[12/14]                   TRAIN_LOSS : 0.5948759317398071
+01:37:17:     EPOCH[15/200]  ITER[13/14]                   TRAIN_LOSS : 0.7079511880874634
+01:37:17:     EPOCH[15/200]  ITER[14/14]                   TRAIN_LOSS : 0.675378680229187
+01:37:17:     
+01:37:17:     TRAIN               EPOCH[15/200]       LOSS : 1.80349326   TOP1 : 0.6572       
+01:37:41:     VALIDATION          EPOCH[15/200]       LOSS : 0.59754973   TOP1 : 0.7064       
+01:38:50:     TEST                EPOCH[15/200]       LOSS : 0.65110801   TOP1 : 0.6276       
+01:38:50:     
+01:39:32:     EPOCH[16/200]  ITER[1/14]                    TRAIN_LOSS : 0.6049954891204834
+01:39:32:     EPOCH[16/200]  ITER[2/14]                    TRAIN_LOSS : 0.6228142976760864
+01:39:32:     EPOCH[16/200]  ITER[3/14]                    TRAIN_LOSS : 0.5996479988098145
+01:39:32:     EPOCH[16/200]  ITER[4/14]                    TRAIN_LOSS : 0.6253376007080078
+01:39:48:     EPOCH[16/200]  ITER[5/14]                    TRAIN_LOSS : 0.5681154727935791
+01:39:48:     EPOCH[16/200]  ITER[6/14]                    TRAIN_LOSS : 0.6640368103981018
+01:39:48:     EPOCH[16/200]  ITER[7/14]                    TRAIN_LOSS : 0.5820126533508301
+01:39:49:     EPOCH[16/200]  ITER[8/14]                    TRAIN_LOSS : 0.5117162466049194
+01:40:03:     EPOCH[16/200]  ITER[9/14]                    TRAIN_LOSS : 0.6633868217468262
+01:40:03:     EPOCH[16/200]  ITER[10/14]                   TRAIN_LOSS : 0.683117151260376
+01:40:03:     EPOCH[16/200]  ITER[11/14]                   TRAIN_LOSS : 0.5612366795539856
+01:40:03:     EPOCH[16/200]  ITER[12/14]                   TRAIN_LOSS : 0.5894290208816528
+01:40:16:     EPOCH[16/200]  ITER[13/14]                   TRAIN_LOSS : 0.7487852573394775
+01:40:16:     EPOCH[16/200]  ITER[14/14]                   TRAIN_LOSS : 0.6219077110290527
+01:40:16:     
+01:40:16:     TRAIN               EPOCH[16/200]       LOSS : 1.72935901   TOP1 : 0.6599       
+01:40:40:     VALIDATION          EPOCH[16/200]       LOSS : 0.58622483   TOP1 : 0.7064       
+01:41:49:     TEST                EPOCH[16/200]       LOSS : 0.66193607   TOP1 : 0.6276       
+01:41:49:     
+01:42:31:     EPOCH[17/200]  ITER[1/14]                    TRAIN_LOSS : 0.6297345161437988
+01:42:31:     EPOCH[17/200]  ITER[2/14]                    TRAIN_LOSS : 0.6361688375473022
+01:42:31:     EPOCH[17/200]  ITER[3/14]                    TRAIN_LOSS : 0.6341228485107422
+01:42:31:     EPOCH[17/200]  ITER[4/14]                    TRAIN_LOSS : 0.62394118309021
+01:42:47:     EPOCH[17/200]  ITER[5/14]                    TRAIN_LOSS : 0.5707173347473145
+01:42:47:     EPOCH[17/200]  ITER[6/14]                    TRAIN_LOSS : 0.6351638436317444
+01:42:48:     EPOCH[17/200]  ITER[7/14]                    TRAIN_LOSS : 0.5914009809494019
+01:42:48:     EPOCH[17/200]  ITER[8/14]                    TRAIN_LOSS : 0.5479831695556641
+01:43:02:     EPOCH[17/200]  ITER[9/14]                    TRAIN_LOSS : 0.6318081617355347
+01:43:02:     EPOCH[17/200]  ITER[10/14]                   TRAIN_LOSS : 0.6643832325935364
+01:43:02:     EPOCH[17/200]  ITER[11/14]                   TRAIN_LOSS : 0.5479367971420288
+01:43:02:     EPOCH[17/200]  ITER[12/14]                   TRAIN_LOSS : 0.6084175109863281
+01:43:15:     EPOCH[17/200]  ITER[13/14]                   TRAIN_LOSS : 0.675805926322937
+01:43:15:     EPOCH[17/200]  ITER[14/14]                   TRAIN_LOSS : 0.6598894596099854
+01:43:15:     
+01:43:15:     TRAIN               EPOCH[17/200]       LOSS : 1.66385755   TOP1 : 0.6616       
+01:43:39:     VALIDATION          EPOCH[17/200]       LOSS : 0.59237231   TOP1 : 0.7064       
+01:44:47:     TEST                EPOCH[17/200]       LOSS : 0.65833572   TOP1 : 0.6276       
+01:44:47:     
+01:45:29:     EPOCH[18/200]  ITER[1/14]                    TRAIN_LOSS : 0.6198498606681824
+01:45:29:     EPOCH[18/200]  ITER[2/14]                    TRAIN_LOSS : 0.6156693696975708
+01:45:29:     EPOCH[18/200]  ITER[3/14]                    TRAIN_LOSS : 0.6301549673080444
+01:45:29:     EPOCH[18/200]  ITER[4/14]                    TRAIN_LOSS : 0.6258889436721802
+01:45:45:     EPOCH[18/200]  ITER[5/14]                    TRAIN_LOSS : 0.5631965398788452
+01:45:45:     EPOCH[18/200]  ITER[6/14]                    TRAIN_LOSS : 0.6459464430809021
+01:45:45:     EPOCH[18/200]  ITER[7/14]                    TRAIN_LOSS : 0.6060354709625244
+01:45:45:     EPOCH[18/200]  ITER[8/14]                    TRAIN_LOSS : 0.5355530977249146
+01:46:00:     EPOCH[18/200]  ITER[9/14]                    TRAIN_LOSS : 0.6260994672775269
+01:46:00:     EPOCH[18/200]  ITER[10/14]                   TRAIN_LOSS : 0.6231127977371216
+01:46:00:     EPOCH[18/200]  ITER[11/14]                   TRAIN_LOSS : 0.5702258944511414
+01:46:00:     EPOCH[18/200]  ITER[12/14]                   TRAIN_LOSS : 0.5787808299064636
+01:46:13:     EPOCH[18/200]  ITER[13/14]                   TRAIN_LOSS : 0.6767431497573853
+01:46:14:     EPOCH[18/200]  ITER[14/14]                   TRAIN_LOSS : 0.7777364253997803
+01:46:14:     
+01:46:14:     TRAIN               EPOCH[18/200]       LOSS : 1.60538872   TOP1 : 0.6628       
+01:46:37:     VALIDATION          EPOCH[18/200]       LOSS : 0.58939635   TOP1 : 0.7064       
+01:47:45:     TEST                EPOCH[18/200]       LOSS : 0.67196919   TOP1 : 0.6276       
+01:47:45:     
+01:48:28:     EPOCH[19/200]  ITER[1/14]                    TRAIN_LOSS : 0.6247574687004089
+01:48:28:     EPOCH[19/200]  ITER[2/14]                    TRAIN_LOSS : 0.5997366905212402
+01:48:28:     EPOCH[19/200]  ITER[3/14]                    TRAIN_LOSS : 0.6260824799537659
+01:48:28:     EPOCH[19/200]  ITER[4/14]                    TRAIN_LOSS : 0.588408887386322
+01:48:45:     EPOCH[19/200]  ITER[5/14]                    TRAIN_LOSS : 0.5810348987579346
+01:48:45:     EPOCH[19/200]  ITER[6/14]                    TRAIN_LOSS : 0.6651159524917603
+01:48:45:     EPOCH[19/200]  ITER[7/14]                    TRAIN_LOSS : 0.6463984251022339
+01:48:45:     EPOCH[19/200]  ITER[8/14]                    TRAIN_LOSS : 0.5435904264450073
+01:48:59:     EPOCH[19/200]  ITER[9/14]                    TRAIN_LOSS : 0.6161954402923584
+01:48:59:     EPOCH[19/200]  ITER[10/14]                   TRAIN_LOSS : 0.6430546641349792
+01:48:59:     EPOCH[19/200]  ITER[11/14]                   TRAIN_LOSS : 0.5328736305236816
+01:48:59:     EPOCH[19/200]  ITER[12/14]                   TRAIN_LOSS : 0.5759973526000977
+01:49:13:     EPOCH[19/200]  ITER[13/14]                   TRAIN_LOSS : 0.6912968158721924
+01:49:13:     EPOCH[19/200]  ITER[14/14]                   TRAIN_LOSS : 0.74418705701828
+01:49:13:     
+01:49:13:     TRAIN               EPOCH[19/200]       LOSS : 1.55311838   TOP1 : 0.6642       
+01:49:36:     VALIDATION          EPOCH[19/200]       LOSS : 0.59130973   TOP1 : 0.7064       
+01:50:45:     TEST                EPOCH[19/200]       LOSS : 0.66375599   TOP1 : 0.6276       
+01:50:45:     
+01:51:27:     EPOCH[20/200]  ITER[1/14]                    TRAIN_LOSS : 0.5908401608467102
+01:51:27:     EPOCH[20/200]  ITER[2/14]                    TRAIN_LOSS : 0.6152536869049072
+01:51:27:     EPOCH[20/200]  ITER[3/14]                    TRAIN_LOSS : 0.646120011806488
+01:51:27:     EPOCH[20/200]  ITER[4/14]                    TRAIN_LOSS : 0.6232980489730835
+01:51:44:     EPOCH[20/200]  ITER[5/14]                    TRAIN_LOSS : 0.6173262596130371
+01:51:44:     EPOCH[20/200]  ITER[6/14]                    TRAIN_LOSS : 0.6302165985107422
+01:51:44:     EPOCH[20/200]  ITER[7/14]                    TRAIN_LOSS : 0.6076286435127258
+01:51:44:     EPOCH[20/200]  ITER[8/14]                    TRAIN_LOSS : 0.5368448495864868
+01:51:58:     EPOCH[20/200]  ITER[9/14]                    TRAIN_LOSS : 0.605915904045105
+01:51:58:     EPOCH[20/200]  ITER[10/14]                   TRAIN_LOSS : 0.6504013538360596
+01:51:58:     EPOCH[20/200]  ITER[11/14]                   TRAIN_LOSS : 0.5292030572891235
+01:51:58:     EPOCH[20/200]  ITER[12/14]                   TRAIN_LOSS : 0.5828104615211487
+01:52:12:     EPOCH[20/200]  ITER[13/14]                   TRAIN_LOSS : 0.6989113092422485
+01:52:12:     EPOCH[20/200]  ITER[14/14]                   TRAIN_LOSS : 0.681086003780365
+01:52:12:     
+01:52:12:     TRAIN               EPOCH[20/200]       LOSS : 1.50603108   TOP1 : 0.6659       
+01:52:35:     VALIDATION          EPOCH[20/200]       LOSS : 0.58930893   TOP1 : 0.7064       
+01:53:44:     TEST                EPOCH[20/200]       LOSS : 0.6698404    TOP1 : 0.6276       
+01:53:44:     
+01:54:26:     EPOCH[21/200]  ITER[1/14]                    TRAIN_LOSS : 0.5907542705535889
+01:54:26:     EPOCH[21/200]  ITER[2/14]                    TRAIN_LOSS : 0.617310643196106
+01:54:27:     EPOCH[21/200]  ITER[3/14]                    TRAIN_LOSS : 0.6544326543807983
+01:54:27:     EPOCH[21/200]  ITER[4/14]                    TRAIN_LOSS : 0.6109987497329712
+01:54:43:     EPOCH[21/200]  ITER[5/14]                    TRAIN_LOSS : 0.6087669730186462
+01:54:43:     EPOCH[21/200]  ITER[6/14]                    TRAIN_LOSS : 0.6608773469924927
+01:54:43:     EPOCH[21/200]  ITER[7/14]                    TRAIN_LOSS : 0.6276302933692932
+01:54:43:     EPOCH[21/200]  ITER[8/14]                    TRAIN_LOSS : 0.5766808986663818
+01:54:57:     EPOCH[21/200]  ITER[9/14]                    TRAIN_LOSS : 0.613939642906189
+01:54:57:     EPOCH[21/200]  ITER[10/14]                   TRAIN_LOSS : 0.5971839427947998
+01:54:57:     EPOCH[21/200]  ITER[11/14]                   TRAIN_LOSS : 0.5670716166496277
+01:54:57:     EPOCH[21/200]  ITER[12/14]                   TRAIN_LOSS : 0.5642164945602417
+01:55:11:     EPOCH[21/200]  ITER[13/14]                   TRAIN_LOSS : 0.6852535009384155
+01:55:11:     EPOCH[21/200]  ITER[14/14]                   TRAIN_LOSS : 0.5427446365356445
+01:55:11:     
+01:55:11:     TRAIN               EPOCH[21/200]       LOSS : 1.46348032   TOP1 : 0.6666       
+01:55:34:     VALIDATION          EPOCH[21/200]       LOSS : 0.59235005   TOP1 : 0.7064       
+01:56:43:     TEST                EPOCH[21/200]       LOSS : 0.70212028   TOP1 : 0.6276       
+01:56:43:     
+01:57:26:     EPOCH[22/200]  ITER[1/14]                    TRAIN_LOSS : 0.6064665913581848
+01:57:26:     EPOCH[22/200]  ITER[2/14]                    TRAIN_LOSS : 0.5941730737686157
+01:57:26:     EPOCH[22/200]  ITER[3/14]                    TRAIN_LOSS : 0.6731974482536316
+01:57:26:     EPOCH[22/200]  ITER[4/14]                    TRAIN_LOSS : 0.6211897134780884
+01:57:42:     EPOCH[22/200]  ITER[5/14]                    TRAIN_LOSS : 0.5687369108200073
+01:57:42:     EPOCH[22/200]  ITER[6/14]                    TRAIN_LOSS : 0.6323296427726746
+01:57:42:     EPOCH[22/200]  ITER[7/14]                    TRAIN_LOSS : 0.6061508059501648
+01:57:42:     EPOCH[22/200]  ITER[8/14]                    TRAIN_LOSS : 0.5269630551338196
+01:57:57:     EPOCH[22/200]  ITER[9/14]                    TRAIN_LOSS : 0.603556752204895
+01:57:57:     EPOCH[22/200]  ITER[10/14]                   TRAIN_LOSS : 0.6023825407028198
+01:57:57:     EPOCH[22/200]  ITER[11/14]                   TRAIN_LOSS : 0.5484983921051025
+01:57:57:     EPOCH[22/200]  ITER[12/14]                   TRAIN_LOSS : 0.5765416622161865
+01:58:10:     EPOCH[22/200]  ITER[13/14]                   TRAIN_LOSS : 0.6746617555618286
+01:58:10:     EPOCH[22/200]  ITER[14/14]                   TRAIN_LOSS : 0.7164730429649353
+01:58:10:     
+01:58:10:     TRAIN               EPOCH[22/200]       LOSS : 1.4244266    TOP1 : 0.6679       
+01:58:34:     VALIDATION          EPOCH[22/200]       LOSS : 0.5865125    TOP1 : 0.7064       
+01:59:43:     TEST                EPOCH[22/200]       LOSS : 0.67113826   TOP1 : 0.6276       
+01:59:43:     
+02:00:25:     EPOCH[23/200]  ITER[1/14]                    TRAIN_LOSS : 0.614615797996521
+02:00:25:     EPOCH[23/200]  ITER[2/14]                    TRAIN_LOSS : 0.6239378452301025
+02:00:25:     EPOCH[23/200]  ITER[3/14]                    TRAIN_LOSS : 0.6305863857269287
+02:00:25:     EPOCH[23/200]  ITER[4/14]                    TRAIN_LOSS : 0.5783200860023499
+02:00:42:     EPOCH[23/200]  ITER[5/14]                    TRAIN_LOSS : 0.5701980590820312
+02:00:42:     EPOCH[23/200]  ITER[6/14]                    TRAIN_LOSS : 0.6458418369293213
+02:00:42:     EPOCH[23/200]  ITER[7/14]                    TRAIN_LOSS : 0.5976000428199768
+02:00:42:     EPOCH[23/200]  ITER[8/14]                    TRAIN_LOSS : 0.5417711138725281
+02:00:56:     EPOCH[23/200]  ITER[9/14]                    TRAIN_LOSS : 0.6297368407249451
+02:00:56:     EPOCH[23/200]  ITER[10/14]                   TRAIN_LOSS : 0.6289229989051819
+02:00:56:     EPOCH[23/200]  ITER[11/14]                   TRAIN_LOSS : 0.5538362264633179
+02:00:56:     EPOCH[23/200]  ITER[12/14]                   TRAIN_LOSS : 0.6010108590126038
+02:01:10:     EPOCH[23/200]  ITER[13/14]                   TRAIN_LOSS : 0.6963063478469849
+02:01:10:     EPOCH[23/200]  ITER[14/14]                   TRAIN_LOSS : 0.7106778621673584
+02:01:10:     
+02:01:10:     TRAIN               EPOCH[23/200]       LOSS : 1.3890219    TOP1 : 0.6692       
+02:01:33:     VALIDATION          EPOCH[23/200]       LOSS : 0.59536075   TOP1 : 0.7064       
+02:02:42:     TEST                EPOCH[23/200]       LOSS : 0.65733712   TOP1 : 0.6276       
+02:02:42:     
+02:03:25:     EPOCH[24/200]  ITER[1/14]                    TRAIN_LOSS : 0.5854375958442688
+02:03:25:     EPOCH[24/200]  ITER[2/14]                    TRAIN_LOSS : 0.6144897937774658
+02:03:25:     EPOCH[24/200]  ITER[3/14]                    TRAIN_LOSS : 0.637662410736084
+02:03:25:     EPOCH[24/200]  ITER[4/14]                    TRAIN_LOSS : 0.6296392679214478
+02:03:41:     EPOCH[24/200]  ITER[5/14]                    TRAIN_LOSS : 0.5847581624984741
+02:03:41:     EPOCH[24/200]  ITER[6/14]                    TRAIN_LOSS : 0.6166306138038635
+02:03:41:     EPOCH[24/200]  ITER[7/14]                    TRAIN_LOSS : 0.6154705882072449
+02:03:41:     EPOCH[24/200]  ITER[8/14]                    TRAIN_LOSS : 0.5059979557991028
+02:03:56:     EPOCH[24/200]  ITER[9/14]                    TRAIN_LOSS : 0.6937850117683411
+02:03:56:     EPOCH[24/200]  ITER[10/14]                   TRAIN_LOSS : 0.6668009757995605
+02:03:56:     EPOCH[24/200]  ITER[11/14]                   TRAIN_LOSS : 0.5558148622512817
+02:03:56:     EPOCH[24/200]  ITER[12/14]                   TRAIN_LOSS : 0.6056321859359741
+02:04:09:     EPOCH[24/200]  ITER[13/14]                   TRAIN_LOSS : 0.6872466802597046
+02:04:09:     EPOCH[24/200]  ITER[14/14]                   TRAIN_LOSS : 0.6225270628929138
+02:04:09:     
+02:04:09:     TRAIN               EPOCH[24/200]       LOSS : 1.35678924   TOP1 : 0.6704       
+02:04:32:     VALIDATION          EPOCH[24/200]       LOSS : 0.60628176   TOP1 : 0.7064       
+02:05:41:     TEST                EPOCH[24/200]       LOSS : 0.65439938   TOP1 : 0.6276       
+02:05:41:     
+02:06:23:     EPOCH[25/200]  ITER[1/14]                    TRAIN_LOSS : 0.6062579154968262
+02:06:23:     EPOCH[25/200]  ITER[2/14]                    TRAIN_LOSS : 0.6313228607177734
+02:06:23:     EPOCH[25/200]  ITER[3/14]                    TRAIN_LOSS : 0.646526575088501
+02:06:23:     EPOCH[25/200]  ITER[4/14]                    TRAIN_LOSS : 0.6222343444824219
+02:06:39:     EPOCH[25/200]  ITER[5/14]                    TRAIN_LOSS : 0.606501579284668
+02:06:40:     EPOCH[25/200]  ITER[6/14]                    TRAIN_LOSS : 0.6494945287704468
+02:06:40:     EPOCH[25/200]  ITER[7/14]                    TRAIN_LOSS : 0.5981243848800659
+02:06:40:     EPOCH[25/200]  ITER[8/14]                    TRAIN_LOSS : 0.49919161200523376
+02:06:54:     EPOCH[25/200]  ITER[9/14]                    TRAIN_LOSS : 0.6889221668243408
+02:06:54:     EPOCH[25/200]  ITER[10/14]                   TRAIN_LOSS : 0.6307969093322754
+02:06:54:     EPOCH[25/200]  ITER[11/14]                   TRAIN_LOSS : 0.5800139904022217
+02:06:54:     EPOCH[25/200]  ITER[12/14]                   TRAIN_LOSS : 0.6362440586090088
+02:07:07:     EPOCH[25/200]  ITER[13/14]                   TRAIN_LOSS : 0.6943937540054321
+02:07:07:     EPOCH[25/200]  ITER[14/14]                   TRAIN_LOSS : 0.6830713152885437
+02:07:07:     
+02:07:07:     TRAIN               EPOCH[25/200]       LOSS : 1.32744461   TOP1 : 0.6714       
+02:07:30:     VALIDATION          EPOCH[25/200]       LOSS : 0.617845     TOP1 : 0.7018       
+02:08:39:     TEST                EPOCH[25/200]       LOSS : 0.6568716    TOP1 : 0.6276       
+02:08:39:     
+02:09:21:     EPOCH[26/200]  ITER[1/14]                    TRAIN_LOSS : 0.6147160530090332
+02:09:21:     EPOCH[26/200]  ITER[2/14]                    TRAIN_LOSS : 0.6577305793762207
+02:09:21:     EPOCH[26/200]  ITER[3/14]                    TRAIN_LOSS : 0.6601617932319641
+02:09:21:     EPOCH[26/200]  ITER[4/14]                    TRAIN_LOSS : 0.6547908186912537
+02:09:38:     EPOCH[26/200]  ITER[5/14]                    TRAIN_LOSS : 0.6593207120895386
+02:09:38:     EPOCH[26/200]  ITER[6/14]                    TRAIN_LOSS : 0.638534426689148
+02:09:38:     EPOCH[26/200]  ITER[7/14]                    TRAIN_LOSS : 0.612008810043335
+02:09:38:     EPOCH[26/200]  ITER[8/14]                    TRAIN_LOSS : 0.5562690496444702
+02:09:52:     EPOCH[26/200]  ITER[9/14]                    TRAIN_LOSS : 0.6571201682090759
+02:09:52:     EPOCH[26/200]  ITER[10/14]                   TRAIN_LOSS : 0.6550908088684082
+02:09:52:     EPOCH[26/200]  ITER[11/14]                   TRAIN_LOSS : 0.5601180791854858
+02:09:52:     EPOCH[26/200]  ITER[12/14]                   TRAIN_LOSS : 0.5924584865570068
+02:10:05:     EPOCH[26/200]  ITER[13/14]                   TRAIN_LOSS : 0.6859108209609985
+02:10:05:     EPOCH[26/200]  ITER[14/14]                   TRAIN_LOSS : 0.7910398244857788
+02:10:05:     
+02:10:05:     TRAIN               EPOCH[26/200]       LOSS : 1.30074938   TOP1 : 0.6722       
+02:10:29:     VALIDATION          EPOCH[26/200]       LOSS : 0.58276758   TOP1 : 0.7064       
+02:11:37:     TEST                EPOCH[26/200]       LOSS : 0.67937172   TOP1 : 0.6276       
+02:11:37:     
+02:12:19:     EPOCH[27/200]  ITER[1/14]                    TRAIN_LOSS : 0.638171374797821
+02:12:20:     EPOCH[27/200]  ITER[2/14]                    TRAIN_LOSS : 0.6236492395401001
+02:12:20:     EPOCH[27/200]  ITER[3/14]                    TRAIN_LOSS : 0.6336284875869751
+02:12:20:     EPOCH[27/200]  ITER[4/14]                    TRAIN_LOSS : 0.6277478933334351
+02:12:36:     EPOCH[27/200]  ITER[5/14]                    TRAIN_LOSS : 0.6404533386230469
+02:12:36:     EPOCH[27/200]  ITER[6/14]                    TRAIN_LOSS : 0.65116286277771
+02:12:36:     EPOCH[27/200]  ITER[7/14]                    TRAIN_LOSS : 0.6178832054138184
+02:12:36:     EPOCH[27/200]  ITER[8/14]                    TRAIN_LOSS : 0.6075361967086792
+02:12:50:     EPOCH[27/200]  ITER[9/14]                    TRAIN_LOSS : 0.6206629276275635
+02:12:50:     EPOCH[27/200]  ITER[10/14]                   TRAIN_LOSS : 0.6027415990829468
+02:12:50:     EPOCH[27/200]  ITER[11/14]                   TRAIN_LOSS : 0.5480656623840332
+02:12:50:     EPOCH[27/200]  ITER[12/14]                   TRAIN_LOSS : 0.5907556414604187
+02:13:04:     EPOCH[27/200]  ITER[13/14]                   TRAIN_LOSS : 0.7014920711517334
+02:13:04:     EPOCH[27/200]  ITER[14/14]                   TRAIN_LOSS : 0.6913585066795349
+02:13:04:     
+02:13:04:     TRAIN               EPOCH[27/200]       LOSS : 1.27569745   TOP1 : 0.6727       
+02:13:27:     VALIDATION          EPOCH[27/200]       LOSS : 0.59070071   TOP1 : 0.7064       
+02:14:36:     TEST                EPOCH[27/200]       LOSS : 0.6997408    TOP1 : 0.6276       
+02:14:36:     
+02:15:17:     EPOCH[28/200]  ITER[1/14]                    TRAIN_LOSS : 0.61838698387146
+02:15:17:     EPOCH[28/200]  ITER[2/14]                    TRAIN_LOSS : 0.6098443269729614
+02:15:17:     EPOCH[28/200]  ITER[3/14]                    TRAIN_LOSS : 0.6055235266685486
+02:15:18:     EPOCH[28/200]  ITER[4/14]                    TRAIN_LOSS : 0.5744549036026001
+02:15:34:     EPOCH[28/200]  ITER[5/14]                    TRAIN_LOSS : 0.6067477464675903
+02:15:34:     EPOCH[28/200]  ITER[6/14]                    TRAIN_LOSS : 0.601978063583374
+02:15:34:     EPOCH[28/200]  ITER[7/14]                    TRAIN_LOSS : 0.6009964942932129
+02:15:34:     EPOCH[28/200]  ITER[8/14]                    TRAIN_LOSS : 0.5560659170150757
+02:15:48:     EPOCH[28/200]  ITER[9/14]                    TRAIN_LOSS : 0.6297904253005981
+02:15:48:     EPOCH[28/200]  ITER[10/14]                   TRAIN_LOSS : 0.6160563230514526
+02:15:48:     EPOCH[28/200]  ITER[11/14]                   TRAIN_LOSS : 0.5490775108337402
+02:15:48:     EPOCH[28/200]  ITER[12/14]                   TRAIN_LOSS : 0.5790513753890991
+02:16:01:     EPOCH[28/200]  ITER[13/14]                   TRAIN_LOSS : 0.6813570857048035
+02:16:01:     EPOCH[28/200]  ITER[14/14]                   TRAIN_LOSS : 0.690405547618866
+02:16:02:     
+02:16:02:     TRAIN               EPOCH[28/200]       LOSS : 1.25169074   TOP1 : 0.6734       
+02:16:25:     VALIDATION          EPOCH[28/200]       LOSS : 0.58463772   TOP1 : 0.7064       
+02:17:34:     TEST                EPOCH[28/200]       LOSS : 0.6659999    TOP1 : 0.6276       
+02:17:34:     
+02:18:16:     EPOCH[29/200]  ITER[1/14]                    TRAIN_LOSS : 0.607587456703186
+02:18:16:     EPOCH[29/200]  ITER[2/14]                    TRAIN_LOSS : 0.5802420377731323
+02:18:16:     EPOCH[29/200]  ITER[3/14]                    TRAIN_LOSS : 0.6187191009521484
+02:18:16:     EPOCH[29/200]  ITER[4/14]                    TRAIN_LOSS : 0.5668140649795532
+02:18:33:     EPOCH[29/200]  ITER[5/14]                    TRAIN_LOSS : 0.570099949836731
+02:18:33:     EPOCH[29/200]  ITER[6/14]                    TRAIN_LOSS : 0.6393757462501526
+02:18:33:     EPOCH[29/200]  ITER[7/14]                    TRAIN_LOSS : 0.5886803269386292
+02:18:33:     EPOCH[29/200]  ITER[8/14]                    TRAIN_LOSS : 0.5402081608772278
+02:18:47:     EPOCH[29/200]  ITER[9/14]                    TRAIN_LOSS : 0.5958919525146484
+02:18:47:     EPOCH[29/200]  ITER[10/14]                   TRAIN_LOSS : 0.6519965529441833
+02:18:47:     EPOCH[29/200]  ITER[11/14]                   TRAIN_LOSS : 0.5212100744247437
+02:18:47:     EPOCH[29/200]  ITER[12/14]                   TRAIN_LOSS : 0.6060793399810791
+02:19:01:     EPOCH[29/200]  ITER[13/14]                   TRAIN_LOSS : 0.6864031553268433
+02:19:01:     EPOCH[29/200]  ITER[14/14]                   TRAIN_LOSS : 0.6523842811584473
+02:19:01:     
+02:19:01:     TRAIN               EPOCH[29/200]       LOSS : 1.22917454   TOP1 : 0.6742       
+02:19:24:     VALIDATION          EPOCH[29/200]       LOSS : 0.58914653   TOP1 : 0.7064       
+02:20:32:     TEST                EPOCH[29/200]       LOSS : 0.6605277    TOP1 : 0.6276       
+02:20:32:     
+02:21:15:     EPOCH[30/200]  ITER[1/14]                    TRAIN_LOSS : 0.6169635653495789
+02:21:15:     EPOCH[30/200]  ITER[2/14]                    TRAIN_LOSS : 0.6091548204421997
+02:21:15:     EPOCH[30/200]  ITER[3/14]                    TRAIN_LOSS : 0.6529111862182617
+02:21:15:     EPOCH[30/200]  ITER[4/14]                    TRAIN_LOSS : 0.598691463470459
+02:21:31:     EPOCH[30/200]  ITER[5/14]                    TRAIN_LOSS : 0.5845761895179749
+02:21:31:     EPOCH[30/200]  ITER[6/14]                    TRAIN_LOSS : 0.6020394563674927
+02:21:31:     EPOCH[30/200]  ITER[7/14]                    TRAIN_LOSS : 0.5843644142150879
+02:21:31:     EPOCH[30/200]  ITER[8/14]                    TRAIN_LOSS : 0.512633204460144
+02:21:46:     EPOCH[30/200]  ITER[9/14]                    TRAIN_LOSS : 0.6156635880470276
+02:21:46:     EPOCH[30/200]  ITER[10/14]                   TRAIN_LOSS : 0.6935116052627563
+02:21:46:     EPOCH[30/200]  ITER[11/14]                   TRAIN_LOSS : 0.5603041052818298
+02:21:46:     EPOCH[30/200]  ITER[12/14]                   TRAIN_LOSS : 0.5532584190368652
+02:21:59:     EPOCH[30/200]  ITER[13/14]                   TRAIN_LOSS : 0.6956906318664551
+02:21:59:     EPOCH[30/200]  ITER[14/14]                   TRAIN_LOSS : 0.7149791121482849
+02:21:59:     
+02:21:59:     TRAIN               EPOCH[30/200]       LOSS : 1.20845816   TOP1 : 0.675        
+02:22:23:     VALIDATION          EPOCH[30/200]       LOSS : 0.59160732   TOP1 : 0.7064       
+02:23:31:     TEST                EPOCH[30/200]       LOSS : 0.65614469   TOP1 : 0.6276       
+02:23:31:     
+02:24:14:     EPOCH[31/200]  ITER[1/14]                    TRAIN_LOSS : 0.6080727577209473
+02:24:14:     EPOCH[31/200]  ITER[2/14]                    TRAIN_LOSS : 0.5995616912841797
+02:24:14:     EPOCH[31/200]  ITER[3/14]                    TRAIN_LOSS : 0.6217322945594788
+02:24:14:     EPOCH[31/200]  ITER[4/14]                    TRAIN_LOSS : 0.624494194984436
+02:24:30:     EPOCH[31/200]  ITER[5/14]                    TRAIN_LOSS : 0.6117486953735352
+02:24:30:     EPOCH[31/200]  ITER[6/14]                    TRAIN_LOSS : 0.653721034526825
+02:24:30:     EPOCH[31/200]  ITER[7/14]                    TRAIN_LOSS : 0.630333662033081
+02:24:30:     EPOCH[31/200]  ITER[8/14]                    TRAIN_LOSS : 0.5598019957542419
+02:24:45:     EPOCH[31/200]  ITER[9/14]                    TRAIN_LOSS : 0.6426258087158203
+02:24:45:     EPOCH[31/200]  ITER[10/14]                   TRAIN_LOSS : 0.6546879410743713
+02:24:45:     EPOCH[31/200]  ITER[11/14]                   TRAIN_LOSS : 0.5633876323699951
+02:24:45:     EPOCH[31/200]  ITER[12/14]                   TRAIN_LOSS : 0.5731229186058044
+02:24:58:     EPOCH[31/200]  ITER[13/14]                   TRAIN_LOSS : 0.672677755355835
+02:24:58:     EPOCH[31/200]  ITER[14/14]                   TRAIN_LOSS : 0.6420862674713135
+02:24:58:     
+02:24:58:     TRAIN               EPOCH[31/200]       LOSS : 1.18937806   TOP1 : 0.6754       
+02:25:22:     VALIDATION          EPOCH[31/200]       LOSS : 0.58387356   TOP1 : 0.7064       
+02:26:31:     TEST                EPOCH[31/200]       LOSS : 0.67342044   TOP1 : 0.6276       
+02:26:31:     
+02:27:13:     EPOCH[32/200]  ITER[1/14]                    TRAIN_LOSS : 0.6471114754676819
+02:27:13:     EPOCH[32/200]  ITER[2/14]                    TRAIN_LOSS : 0.5836646556854248
+02:27:13:     EPOCH[32/200]  ITER[3/14]                    TRAIN_LOSS : 0.6284356713294983
+02:27:13:     EPOCH[32/200]  ITER[4/14]                    TRAIN_LOSS : 0.6109331250190735
+02:27:30:     EPOCH[32/200]  ITER[5/14]                    TRAIN_LOSS : 0.6016857028007507
+02:27:30:     EPOCH[32/200]  ITER[6/14]                    TRAIN_LOSS : 0.6295706033706665
+02:27:30:     EPOCH[32/200]  ITER[7/14]                    TRAIN_LOSS : 0.5913130044937134
+02:27:30:     EPOCH[32/200]  ITER[8/14]                    TRAIN_LOSS : 0.5542876124382019
+02:27:44:     EPOCH[32/200]  ITER[9/14]                    TRAIN_LOSS : 0.6123605966567993
+02:27:44:     EPOCH[32/200]  ITER[10/14]                   TRAIN_LOSS : 0.6034531593322754
+02:27:44:     EPOCH[32/200]  ITER[11/14]                   TRAIN_LOSS : 0.5516255497932434
+02:27:44:     EPOCH[32/200]  ITER[12/14]                   TRAIN_LOSS : 0.5924549698829651
+02:27:58:     EPOCH[32/200]  ITER[13/14]                   TRAIN_LOSS : 0.6780505180358887
+02:27:58:     EPOCH[32/200]  ITER[14/14]                   TRAIN_LOSS : 0.5901168584823608
+02:27:58:     
+02:27:58:     TRAIN               EPOCH[32/200]       LOSS : 1.1711569    TOP1 : 0.6762       
+02:28:21:     VALIDATION          EPOCH[32/200]       LOSS : 0.5839593    TOP1 : 0.7064       
+02:29:30:     TEST                EPOCH[32/200]       LOSS : 0.6732562    TOP1 : 0.6276       
+02:29:30:     
+02:30:13:     EPOCH[33/200]  ITER[1/14]                    TRAIN_LOSS : 0.5866285562515259
+02:30:13:     EPOCH[33/200]  ITER[2/14]                    TRAIN_LOSS : 0.5950683355331421
+02:30:13:     EPOCH[33/200]  ITER[3/14]                    TRAIN_LOSS : 0.6360772848129272
+02:30:13:     EPOCH[33/200]  ITER[4/14]                    TRAIN_LOSS : 0.5880322456359863
+02:30:29:     EPOCH[33/200]  ITER[5/14]                    TRAIN_LOSS : 0.5611634850502014
+02:30:29:     EPOCH[33/200]  ITER[6/14]                    TRAIN_LOSS : 0.6311954855918884
+02:30:29:     EPOCH[33/200]  ITER[7/14]                    TRAIN_LOSS : 0.5841506719589233
+02:30:29:     EPOCH[33/200]  ITER[8/14]                    TRAIN_LOSS : 0.5275827646255493
+02:30:44:     EPOCH[33/200]  ITER[9/14]                    TRAIN_LOSS : 0.5961538553237915
+02:30:44:     EPOCH[33/200]  ITER[10/14]                   TRAIN_LOSS : 0.5967392325401306
+02:30:44:     EPOCH[33/200]  ITER[11/14]                   TRAIN_LOSS : 0.5296514630317688
+02:30:44:     EPOCH[33/200]  ITER[12/14]                   TRAIN_LOSS : 0.6051954030990601
+02:30:57:     EPOCH[33/200]  ITER[13/14]                   TRAIN_LOSS : 0.6710948944091797
+02:30:57:     EPOCH[33/200]  ITER[14/14]                   TRAIN_LOSS : 0.71566241979599
+02:30:57:     
+02:30:57:     TRAIN               EPOCH[33/200]       LOSS : 1.15368923   TOP1 : 0.6769       
+02:31:21:     VALIDATION          EPOCH[33/200]       LOSS : 0.59677927   TOP1 : 0.7064       
+02:32:29:     TEST                EPOCH[33/200]       LOSS : 0.65161407   TOP1 : 0.6276       
+02:32:29:     
+02:33:12:     EPOCH[34/200]  ITER[1/14]                    TRAIN_LOSS : 0.6130270957946777
+02:33:12:     EPOCH[34/200]  ITER[2/14]                    TRAIN_LOSS : 0.6017762422561646
+02:33:12:     EPOCH[34/200]  ITER[3/14]                    TRAIN_LOSS : 0.6383306980133057
+02:33:12:     EPOCH[34/200]  ITER[4/14]                    TRAIN_LOSS : 0.6417648792266846
+02:33:28:     EPOCH[34/200]  ITER[5/14]                    TRAIN_LOSS : 0.6178212761878967
+02:33:28:     EPOCH[34/200]  ITER[6/14]                    TRAIN_LOSS : 0.6248054504394531
+02:33:29:     EPOCH[34/200]  ITER[7/14]                    TRAIN_LOSS : 0.6021122932434082
+02:33:29:     EPOCH[34/200]  ITER[8/14]                    TRAIN_LOSS : 0.5057658553123474
+02:33:43:     EPOCH[34/200]  ITER[9/14]                    TRAIN_LOSS : 0.6571645736694336
+02:33:43:     EPOCH[34/200]  ITER[10/14]                   TRAIN_LOSS : 0.6871412396430969
+02:33:43:     EPOCH[34/200]  ITER[11/14]                   TRAIN_LOSS : 0.5264732837677002
+02:33:43:     EPOCH[34/200]  ITER[12/14]                   TRAIN_LOSS : 0.631911039352417
+02:33:56:     EPOCH[34/200]  ITER[13/14]                   TRAIN_LOSS : 0.7153275012969971
+02:33:56:     EPOCH[34/200]  ITER[14/14]                   TRAIN_LOSS : 0.7078307867050171
+02:33:56:     
+02:33:56:     TRAIN               EPOCH[34/200]       LOSS : 1.13803685   TOP1 : 0.6774       
+02:34:19:     VALIDATION          EPOCH[34/200]       LOSS : 0.59088622   TOP1 : 0.7064       
+02:35:28:     TEST                EPOCH[34/200]       LOSS : 0.65454021   TOP1 : 0.6276       
+02:35:28:     
+02:36:10:     EPOCH[35/200]  ITER[1/14]                    TRAIN_LOSS : 0.6280714273452759
+02:36:10:     EPOCH[35/200]  ITER[2/14]                    TRAIN_LOSS : 0.6429392099380493
+02:36:10:     EPOCH[35/200]  ITER[3/14]                    TRAIN_LOSS : 0.6401355266571045
+02:36:10:     EPOCH[35/200]  ITER[4/14]                    TRAIN_LOSS : 0.627970814704895
+02:36:27:     EPOCH[35/200]  ITER[5/14]                    TRAIN_LOSS : 0.6386552453041077
+02:36:27:     EPOCH[35/200]  ITER[6/14]                    TRAIN_LOSS : 0.6398693323135376
+02:36:27:     EPOCH[35/200]  ITER[7/14]                    TRAIN_LOSS : 0.602091372013092
+02:36:27:     EPOCH[35/200]  ITER[8/14]                    TRAIN_LOSS : 0.5652093887329102
+02:36:41:     EPOCH[35/200]  ITER[9/14]                    TRAIN_LOSS : 0.6031994819641113
+02:36:41:     EPOCH[35/200]  ITER[10/14]                   TRAIN_LOSS : 0.6454843878746033
+02:36:41:     EPOCH[35/200]  ITER[11/14]                   TRAIN_LOSS : 0.5884100198745728
+02:36:41:     EPOCH[35/200]  ITER[12/14]                   TRAIN_LOSS : 0.6603634357452393
+02:36:54:     EPOCH[35/200]  ITER[13/14]                   TRAIN_LOSS : 0.7182990312576294
+02:36:54:     EPOCH[35/200]  ITER[14/14]                   TRAIN_LOSS : 0.7472395896911621
+02:36:55:     
+02:36:55:     TRAIN               EPOCH[35/200]       LOSS : 1.12359231   TOP1 : 0.6778       
+02:37:18:     VALIDATION          EPOCH[35/200]       LOSS : 0.58087877   TOP1 : 0.7064       
+02:38:26:     TEST                EPOCH[35/200]       LOSS : 0.67064784   TOP1 : 0.6276       
+02:38:26:     
+02:39:08:     EPOCH[36/200]  ITER[1/14]                    TRAIN_LOSS : 0.5923121571540833
+02:39:08:     EPOCH[36/200]  ITER[2/14]                    TRAIN_LOSS : 0.5873827934265137
+02:39:09:     EPOCH[36/200]  ITER[3/14]                    TRAIN_LOSS : 0.6552530527114868
+02:39:09:     EPOCH[36/200]  ITER[4/14]                    TRAIN_LOSS : 0.5976766347885132
+02:39:25:     EPOCH[36/200]  ITER[5/14]                    TRAIN_LOSS : 0.6337687969207764
+02:39:25:     EPOCH[36/200]  ITER[6/14]                    TRAIN_LOSS : 0.6288678646087646
+02:39:25:     EPOCH[36/200]  ITER[7/14]                    TRAIN_LOSS : 0.5968039035797119
+02:39:25:     EPOCH[36/200]  ITER[8/14]                    TRAIN_LOSS : 0.5721523761749268
+02:39:39:     EPOCH[36/200]  ITER[9/14]                    TRAIN_LOSS : 0.6895442605018616
+02:39:39:     EPOCH[36/200]  ITER[10/14]                   TRAIN_LOSS : 0.6710660457611084
+02:39:39:     EPOCH[36/200]  ITER[11/14]                   TRAIN_LOSS : 0.5531790256500244
+02:39:39:     EPOCH[36/200]  ITER[12/14]                   TRAIN_LOSS : 0.5884108543395996
+02:39:53:     EPOCH[36/200]  ITER[13/14]                   TRAIN_LOSS : 0.6960272789001465
+02:39:53:     EPOCH[36/200]  ITER[14/14]                   TRAIN_LOSS : 0.5999695062637329
+02:39:53:     
+02:39:53:     TRAIN               EPOCH[36/200]       LOSS : 1.10960088   TOP1 : 0.6777       
+02:40:16:     VALIDATION          EPOCH[36/200]       LOSS : 0.5836942    TOP1 : 0.7064       
+02:41:26:     TEST                EPOCH[36/200]       LOSS : 0.67772308   TOP1 : 0.6276       
+02:41:26:     
+02:42:08:     EPOCH[37/200]  ITER[1/14]                    TRAIN_LOSS : 0.6200253963470459
+02:42:08:     EPOCH[37/200]  ITER[2/14]                    TRAIN_LOSS : 0.6057370901107788
+02:42:08:     EPOCH[37/200]  ITER[3/14]                    TRAIN_LOSS : 0.6385316252708435
+02:42:08:     EPOCH[37/200]  ITER[4/14]                    TRAIN_LOSS : 0.5814736485481262
+02:42:24:     EPOCH[37/200]  ITER[5/14]                    TRAIN_LOSS : 0.5560357570648193
+02:42:24:     EPOCH[37/200]  ITER[6/14]                    TRAIN_LOSS : 0.6277148723602295
+02:42:24:     EPOCH[37/200]  ITER[7/14]                    TRAIN_LOSS : 0.6307430863380432
+02:42:24:     EPOCH[37/200]  ITER[8/14]                    TRAIN_LOSS : 0.5579949617385864
+02:42:39:     EPOCH[37/200]  ITER[9/14]                    TRAIN_LOSS : 0.6295620203018188
+02:42:39:     EPOCH[37/200]  ITER[10/14]                   TRAIN_LOSS : 0.6475743055343628
+02:42:39:     EPOCH[37/200]  ITER[11/14]                   TRAIN_LOSS : 0.5505298376083374
+02:42:39:     EPOCH[37/200]  ITER[12/14]                   TRAIN_LOSS : 0.5944375395774841
+02:42:52:     EPOCH[37/200]  ITER[13/14]                   TRAIN_LOSS : 0.6232879161834717
+02:42:52:     EPOCH[37/200]  ITER[14/14]                   TRAIN_LOSS : 0.6631147265434265
+02:42:52:     
+02:42:52:     TRAIN               EPOCH[37/200]       LOSS : 1.09598258   TOP1 : 0.6782       
+02:43:15:     VALIDATION          EPOCH[37/200]       LOSS : 0.58954414   TOP1 : 0.7064       
+02:44:24:     TEST                EPOCH[37/200]       LOSS : 0.65615249   TOP1 : 0.6276       
+02:44:24:     
+02:45:07:     EPOCH[38/200]  ITER[1/14]                    TRAIN_LOSS : 0.59993976354599
+02:45:07:     EPOCH[38/200]  ITER[2/14]                    TRAIN_LOSS : 0.589455246925354
+02:45:07:     EPOCH[38/200]  ITER[3/14]                    TRAIN_LOSS : 0.6272411346435547
+02:45:07:     EPOCH[38/200]  ITER[4/14]                    TRAIN_LOSS : 0.6107463240623474
+02:45:23:     EPOCH[38/200]  ITER[5/14]                    TRAIN_LOSS : 0.5521439909934998
+02:45:23:     EPOCH[38/200]  ITER[6/14]                    TRAIN_LOSS : 0.6357976794242859
+02:45:23:     EPOCH[38/200]  ITER[7/14]                    TRAIN_LOSS : 0.6009566783905029
+02:45:23:     EPOCH[38/200]  ITER[8/14]                    TRAIN_LOSS : 0.5121920108795166
+02:45:38:     EPOCH[38/200]  ITER[9/14]                    TRAIN_LOSS : 0.6374721527099609
+02:45:38:     EPOCH[38/200]  ITER[10/14]                   TRAIN_LOSS : 0.6383567452430725
+02:45:38:     EPOCH[38/200]  ITER[11/14]                   TRAIN_LOSS : 0.5152677297592163
+02:45:38:     EPOCH[38/200]  ITER[12/14]                   TRAIN_LOSS : 0.5782800912857056
+02:45:51:     EPOCH[38/200]  ITER[13/14]                   TRAIN_LOSS : 0.6455281376838684
+02:45:51:     EPOCH[38/200]  ITER[14/14]                   TRAIN_LOSS : 0.7309780120849609
+02:45:51:     
+02:45:51:     TRAIN               EPOCH[38/200]       LOSS : 1.08286642   TOP1 : 0.6788       
+02:46:14:     VALIDATION          EPOCH[38/200]       LOSS : 0.5927998    TOP1 : 0.7064       
+02:47:23:     TEST                EPOCH[38/200]       LOSS : 0.65461825   TOP1 : 0.6276       
+02:47:23:     
+02:48:05:     EPOCH[39/200]  ITER[1/14]                    TRAIN_LOSS : 0.6104528307914734
+02:48:05:     EPOCH[39/200]  ITER[2/14]                    TRAIN_LOSS : 0.6162447333335876
+02:48:05:     EPOCH[39/200]  ITER[3/14]                    TRAIN_LOSS : 0.6332747936248779
+02:48:05:     EPOCH[39/200]  ITER[4/14]                    TRAIN_LOSS : 0.6120399236679077
+02:48:22:     EPOCH[39/200]  ITER[5/14]                    TRAIN_LOSS : 0.6074581146240234
+02:48:22:     EPOCH[39/200]  ITER[6/14]                    TRAIN_LOSS : 0.6210415363311768
+02:48:22:     EPOCH[39/200]  ITER[7/14]                    TRAIN_LOSS : 0.5694068074226379
+02:48:22:     EPOCH[39/200]  ITER[8/14]                    TRAIN_LOSS : 0.497188538312912
+02:48:36:     EPOCH[39/200]  ITER[9/14]                    TRAIN_LOSS : 0.6783084273338318
+02:48:36:     EPOCH[39/200]  ITER[10/14]                   TRAIN_LOSS : 0.6432132124900818
+02:48:36:     EPOCH[39/200]  ITER[11/14]                   TRAIN_LOSS : 0.5593929290771484
+02:48:36:     EPOCH[39/200]  ITER[12/14]                   TRAIN_LOSS : 0.6289235353469849
+02:48:49:     EPOCH[39/200]  ITER[13/14]                   TRAIN_LOSS : 0.6728719472885132
+02:48:49:     EPOCH[39/200]  ITER[14/14]                   TRAIN_LOSS : 0.7409810423851013
+02:48:49:     
+02:48:49:     TRAIN               EPOCH[39/200]       LOSS : 1.07082792   TOP1 : 0.679        
+02:49:13:     VALIDATION          EPOCH[39/200]       LOSS : 0.60379413   TOP1 : 0.7064       
+02:50:22:     TEST                EPOCH[39/200]       LOSS : 0.65218579   TOP1 : 0.6276       
+02:50:22:     
+02:51:04:     EPOCH[40/200]  ITER[1/14]                    TRAIN_LOSS : 0.609532356262207
+02:51:04:     EPOCH[40/200]  ITER[2/14]                    TRAIN_LOSS : 0.636221170425415
+02:51:04:     EPOCH[40/200]  ITER[3/14]                    TRAIN_LOSS : 0.6490844488143921
+02:51:04:     EPOCH[40/200]  ITER[4/14]                    TRAIN_LOSS : 0.6478650569915771
+02:51:20:     EPOCH[40/200]  ITER[5/14]                    TRAIN_LOSS : 0.6339459419250488
+02:51:20:     EPOCH[40/200]  ITER[6/14]                    TRAIN_LOSS : 0.6468433141708374
+02:51:20:     EPOCH[40/200]  ITER[7/14]                    TRAIN_LOSS : 0.6231622695922852
+02:51:20:     EPOCH[40/200]  ITER[8/14]                    TRAIN_LOSS : 0.5349000096321106
+02:51:34:     EPOCH[40/200]  ITER[9/14]                    TRAIN_LOSS : 0.605868399143219
+02:51:34:     EPOCH[40/200]  ITER[10/14]                   TRAIN_LOSS : 0.6687003374099731
+02:51:34:     EPOCH[40/200]  ITER[11/14]                   TRAIN_LOSS : 0.5142403244972229
+02:51:34:     EPOCH[40/200]  ITER[12/14]                   TRAIN_LOSS : 0.5958014130592346
+02:51:48:     EPOCH[40/200]  ITER[13/14]                   TRAIN_LOSS : 0.6983247995376587
+02:51:48:     EPOCH[40/200]  ITER[14/14]                   TRAIN_LOSS : 0.648298442363739
+02:51:48:     
+02:51:48:     TRAIN               EPOCH[40/200]       LOSS : 1.05957579   TOP1 : 0.6795       
+02:52:11:     VALIDATION          EPOCH[40/200]       LOSS : 0.58833523   TOP1 : 0.7064       
+02:53:20:     TEST                EPOCH[40/200]       LOSS : 0.67786998   TOP1 : 0.6276       
+02:53:20:     
+02:54:02:     EPOCH[41/200]  ITER[1/14]                    TRAIN_LOSS : 0.6149483919143677
+02:54:02:     EPOCH[41/200]  ITER[2/14]                    TRAIN_LOSS : 0.6088657379150391
+02:54:02:     EPOCH[41/200]  ITER[3/14]                    TRAIN_LOSS : 0.6527496576309204
+02:54:02:     EPOCH[41/200]  ITER[4/14]                    TRAIN_LOSS : 0.6071264743804932
+02:54:18:     EPOCH[41/200]  ITER[5/14]                    TRAIN_LOSS : 0.5963262319564819
+02:54:18:     EPOCH[41/200]  ITER[6/14]                    TRAIN_LOSS : 0.6332678198814392
+02:54:18:     EPOCH[41/200]  ITER[7/14]                    TRAIN_LOSS : 0.6007543802261353
+02:54:18:     EPOCH[41/200]  ITER[8/14]                    TRAIN_LOSS : 0.5560701489448547
+02:54:33:     EPOCH[41/200]  ITER[9/14]                    TRAIN_LOSS : 0.6190600395202637
+02:54:33:     EPOCH[41/200]  ITER[10/14]                   TRAIN_LOSS : 0.6247196793556213
+02:54:33:     EPOCH[41/200]  ITER[11/14]                   TRAIN_LOSS : 0.5567644834518433
+02:54:33:     EPOCH[41/200]  ITER[12/14]                   TRAIN_LOSS : 0.5880504846572876
+02:54:46:     EPOCH[41/200]  ITER[13/14]                   TRAIN_LOSS : 0.6963881254196167
+02:54:46:     EPOCH[41/200]  ITER[14/14]                   TRAIN_LOSS : 0.778498649597168
+02:54:46:     
+02:54:46:     TRAIN               EPOCH[41/200]       LOSS : 1.04871537   TOP1 : 0.6798       
+02:55:10:     VALIDATION          EPOCH[41/200]       LOSS : 0.58496815   TOP1 : 0.7064       
+02:56:18:     TEST                EPOCH[41/200]       LOSS : 0.66829367   TOP1 : 0.6276       
+02:56:18:     
+02:57:00:     EPOCH[42/200]  ITER[1/14]                    TRAIN_LOSS : 0.596994161605835
+02:57:00:     EPOCH[42/200]  ITER[2/14]                    TRAIN_LOSS : 0.5762255787849426
+02:57:00:     EPOCH[42/200]  ITER[3/14]                    TRAIN_LOSS : 0.6627220511436462
+02:57:00:     EPOCH[42/200]  ITER[4/14]                    TRAIN_LOSS : 0.5858533978462219
+02:57:16:     EPOCH[42/200]  ITER[5/14]                    TRAIN_LOSS : 0.5908830761909485
+02:57:17:     EPOCH[42/200]  ITER[6/14]                    TRAIN_LOSS : 0.6445609331130981
+02:57:17:     EPOCH[42/200]  ITER[7/14]                    TRAIN_LOSS : 0.5729870796203613
+02:57:17:     EPOCH[42/200]  ITER[8/14]                    TRAIN_LOSS : 0.5657695531845093
+02:57:31:     EPOCH[42/200]  ITER[9/14]                    TRAIN_LOSS : 0.6224818229675293
+02:57:31:     EPOCH[42/200]  ITER[10/14]                   TRAIN_LOSS : 0.6128329038619995
+02:57:31:     EPOCH[42/200]  ITER[11/14]                   TRAIN_LOSS : 0.5292181968688965
+02:57:31:     EPOCH[42/200]  ITER[12/14]                   TRAIN_LOSS : 0.6076974868774414
+02:57:45:     EPOCH[42/200]  ITER[13/14]                   TRAIN_LOSS : 0.6601057052612305
+02:57:45:     EPOCH[42/200]  ITER[14/14]                   TRAIN_LOSS : 0.6736592054367065
+02:57:45:     
+02:57:45:     TRAIN               EPOCH[42/200]       LOSS : 1.03810776   TOP1 : 0.6802       
+02:58:08:     VALIDATION          EPOCH[42/200]       LOSS : 0.58460509   TOP1 : 0.7064       
+02:59:16:     TEST                EPOCH[42/200]       LOSS : 0.66798102   TOP1 : 0.6276       
+02:59:16:     
+02:59:58:     EPOCH[43/200]  ITER[1/14]                    TRAIN_LOSS : 0.6188510656356812
+02:59:58:     EPOCH[43/200]  ITER[2/14]                    TRAIN_LOSS : 0.606192946434021
+02:59:58:     EPOCH[43/200]  ITER[3/14]                    TRAIN_LOSS : 0.6358115673065186
+02:59:58:     EPOCH[43/200]  ITER[4/14]                    TRAIN_LOSS : 0.5658777952194214
+03:00:14:     EPOCH[43/200]  ITER[5/14]                    TRAIN_LOSS : 0.5830801725387573
+03:00:14:     EPOCH[43/200]  ITER[6/14]                    TRAIN_LOSS : 0.6300668716430664
+03:00:14:     EPOCH[43/200]  ITER[7/14]                    TRAIN_LOSS : 0.6186864376068115
+03:00:14:     EPOCH[43/200]  ITER[8/14]                    TRAIN_LOSS : 0.5322105884552002
+03:00:28:     EPOCH[43/200]  ITER[9/14]                    TRAIN_LOSS : 0.6021298170089722
+03:00:28:     EPOCH[43/200]  ITER[10/14]                   TRAIN_LOSS : 0.6220766305923462
+03:00:28:     EPOCH[43/200]  ITER[11/14]                   TRAIN_LOSS : 0.538475513458252
+03:00:28:     EPOCH[43/200]  ITER[12/14]                   TRAIN_LOSS : 0.6001914739608765
+03:00:42:     EPOCH[43/200]  ITER[13/14]                   TRAIN_LOSS : 0.6769006252288818
+03:00:42:     EPOCH[43/200]  ITER[14/14]                   TRAIN_LOSS : 0.740577220916748
+03:00:42:     
+03:00:42:     TRAIN               EPOCH[43/200]       LOSS : 1.02801957   TOP1 : 0.6806       
+03:01:05:     VALIDATION          EPOCH[43/200]       LOSS : 0.58989797   TOP1 : 0.7064       
+03:02:13:     TEST                EPOCH[43/200]       LOSS : 0.66170304   TOP1 : 0.6276       
+03:02:13:     
+03:02:54:     EPOCH[44/200]  ITER[1/14]                    TRAIN_LOSS : 0.5948570966720581
+03:02:54:     EPOCH[44/200]  ITER[2/14]                    TRAIN_LOSS : 0.5992950201034546
+03:02:54:     EPOCH[44/200]  ITER[3/14]                    TRAIN_LOSS : 0.6318650245666504
+03:02:54:     EPOCH[44/200]  ITER[4/14]                    TRAIN_LOSS : 0.6086483597755432
+03:03:11:     EPOCH[44/200]  ITER[5/14]                    TRAIN_LOSS : 0.6194652318954468
+03:03:11:     EPOCH[44/200]  ITER[6/14]                    TRAIN_LOSS : 0.629081130027771
+03:03:11:     EPOCH[44/200]  ITER[7/14]                    TRAIN_LOSS : 0.5847277641296387
+03:03:11:     EPOCH[44/200]  ITER[8/14]                    TRAIN_LOSS : 0.5213390588760376
+03:03:25:     EPOCH[44/200]  ITER[9/14]                    TRAIN_LOSS : 0.6488867998123169
+03:03:25:     EPOCH[44/200]  ITER[10/14]                   TRAIN_LOSS : 0.6434499025344849
+03:03:25:     EPOCH[44/200]  ITER[11/14]                   TRAIN_LOSS : 0.5407514572143555
+03:03:25:     EPOCH[44/200]  ITER[12/14]                   TRAIN_LOSS : 0.6072438955307007
+03:03:38:     EPOCH[44/200]  ITER[13/14]                   TRAIN_LOSS : 0.6531084179878235
+03:03:38:     EPOCH[44/200]  ITER[14/14]                   TRAIN_LOSS : 0.7181437015533447
+03:03:38:     
+03:03:38:     TRAIN               EPOCH[44/200]       LOSS : 1.01847258   TOP1 : 0.681        
+03:04:02:     VALIDATION          EPOCH[44/200]       LOSS : 0.59353127   TOP1 : 0.7064       
+03:05:09:     TEST                EPOCH[44/200]       LOSS : 0.65314753   TOP1 : 0.6276       
+03:05:09:     
+03:05:51:     EPOCH[45/200]  ITER[1/14]                    TRAIN_LOSS : 0.5957717895507812
+03:05:51:     EPOCH[45/200]  ITER[2/14]                    TRAIN_LOSS : 0.6126059293746948
+03:05:51:     EPOCH[45/200]  ITER[3/14]                    TRAIN_LOSS : 0.6382670998573303
+03:05:51:     EPOCH[45/200]  ITER[4/14]                    TRAIN_LOSS : 0.6085700988769531
+03:06:07:     EPOCH[45/200]  ITER[5/14]                    TRAIN_LOSS : 0.6077794432640076
+03:06:07:     EPOCH[45/200]  ITER[6/14]                    TRAIN_LOSS : 0.626147985458374
+03:06:07:     EPOCH[45/200]  ITER[7/14]                    TRAIN_LOSS : 0.6015307903289795
+03:06:08:     EPOCH[45/200]  ITER[8/14]                    TRAIN_LOSS : 0.5484941005706787
+03:06:22:     EPOCH[45/200]  ITER[9/14]                    TRAIN_LOSS : 0.634709894657135
+03:06:22:     EPOCH[45/200]  ITER[10/14]                   TRAIN_LOSS : 0.6696553230285645
+03:06:22:     EPOCH[45/200]  ITER[11/14]                   TRAIN_LOSS : 0.5573194026947021
+03:06:22:     EPOCH[45/200]  ITER[12/14]                   TRAIN_LOSS : 0.5976423025131226
+03:06:35:     EPOCH[45/200]  ITER[13/14]                   TRAIN_LOSS : 0.6730774641036987
+03:06:35:     EPOCH[45/200]  ITER[14/14]                   TRAIN_LOSS : 0.7542495131492615
+03:06:35:     
+03:06:35:     TRAIN               EPOCH[45/200]       LOSS : 1.00951104   TOP1 : 0.6814       
+03:06:58:     VALIDATION          EPOCH[45/200]       LOSS : 0.58647542   TOP1 : 0.7064       
+03:08:07:     TEST                EPOCH[45/200]       LOSS : 0.66461192   TOP1 : 0.6276       
+03:08:07:     
+03:08:48:     EPOCH[46/200]  ITER[1/14]                    TRAIN_LOSS : 0.6295080184936523
+03:08:48:     EPOCH[46/200]  ITER[2/14]                    TRAIN_LOSS : 0.5955042839050293
+03:08:48:     EPOCH[46/200]  ITER[3/14]                    TRAIN_LOSS : 0.618234395980835
+03:08:48:     EPOCH[46/200]  ITER[4/14]                    TRAIN_LOSS : 0.6025646924972534
+03:09:04:     EPOCH[46/200]  ITER[5/14]                    TRAIN_LOSS : 0.6103701591491699
+03:09:04:     EPOCH[46/200]  ITER[6/14]                    TRAIN_LOSS : 0.649703323841095
+03:09:04:     EPOCH[46/200]  ITER[7/14]                    TRAIN_LOSS : 0.6246234178543091
+03:09:04:     EPOCH[46/200]  ITER[8/14]                    TRAIN_LOSS : 0.5518969893455505
+03:09:19:     EPOCH[46/200]  ITER[9/14]                    TRAIN_LOSS : 0.5973576307296753
+03:09:19:     EPOCH[46/200]  ITER[10/14]                   TRAIN_LOSS : 0.640392541885376
+03:09:19:     EPOCH[46/200]  ITER[11/14]                   TRAIN_LOSS : 0.5318537950515747
+03:09:19:     EPOCH[46/200]  ITER[12/14]                   TRAIN_LOSS : 0.5945450067520142
+03:09:32:     EPOCH[46/200]  ITER[13/14]                   TRAIN_LOSS : 0.6767671704292297
+03:09:32:     EPOCH[46/200]  ITER[14/14]                   TRAIN_LOSS : 0.7065463066101074
+03:09:32:     
+03:09:32:     TRAIN               EPOCH[46/200]       LOSS : 1.00084485   TOP1 : 0.6817       
+03:09:55:     VALIDATION          EPOCH[46/200]       LOSS : 0.59179684   TOP1 : 0.7064       
+03:11:03:     TEST                EPOCH[46/200]       LOSS : 0.69529746   TOP1 : 0.6276       
+03:11:03:     
+03:11:46:     EPOCH[47/200]  ITER[1/14]                    TRAIN_LOSS : 0.6225103139877319
+03:11:46:     EPOCH[47/200]  ITER[2/14]                    TRAIN_LOSS : 0.6588372588157654
+03:11:46:     EPOCH[47/200]  ITER[3/14]                    TRAIN_LOSS : 0.6477614641189575
+03:11:46:     EPOCH[47/200]  ITER[4/14]                    TRAIN_LOSS : 0.5611490607261658
+03:12:03:     EPOCH[47/200]  ITER[5/14]                    TRAIN_LOSS : 0.5875219106674194
+03:12:03:     EPOCH[47/200]  ITER[6/14]                    TRAIN_LOSS : 0.6435087323188782
+03:12:03:     EPOCH[47/200]  ITER[7/14]                    TRAIN_LOSS : 0.5956026315689087
+03:12:03:     EPOCH[47/200]  ITER[8/14]                    TRAIN_LOSS : 0.5695977210998535
+03:12:17:     EPOCH[47/200]  ITER[9/14]                    TRAIN_LOSS : 0.6293300986289978
+03:12:17:     EPOCH[47/200]  ITER[10/14]                   TRAIN_LOSS : 0.629694938659668
+03:12:17:     EPOCH[47/200]  ITER[11/14]                   TRAIN_LOSS : 0.5513105392456055
+03:12:17:     EPOCH[47/200]  ITER[12/14]                   TRAIN_LOSS : 0.5922878980636597
+03:12:31:     EPOCH[47/200]  ITER[13/14]                   TRAIN_LOSS : 0.659969687461853
+03:12:31:     EPOCH[47/200]  ITER[14/14]                   TRAIN_LOSS : 0.740097165107727
+03:12:31:     
+03:12:31:     TRAIN               EPOCH[47/200]       LOSS : 0.99259915   TOP1 : 0.682        
+03:12:54:     VALIDATION          EPOCH[47/200]       LOSS : 0.59047376   TOP1 : 0.7064       
+03:14:02:     TEST                EPOCH[47/200]       LOSS : 0.65978107   TOP1 : 0.6276       
+03:14:02:     
+03:14:44:     EPOCH[48/200]  ITER[1/14]                    TRAIN_LOSS : 0.6194363832473755
+03:14:44:     EPOCH[48/200]  ITER[2/14]                    TRAIN_LOSS : 0.5962312817573547
+03:14:44:     EPOCH[48/200]  ITER[3/14]                    TRAIN_LOSS : 0.6485271453857422
+03:14:44:     EPOCH[48/200]  ITER[4/14]                    TRAIN_LOSS : 0.6000271439552307
+03:15:01:     EPOCH[48/200]  ITER[5/14]                    TRAIN_LOSS : 0.5749498009681702
+03:15:01:     EPOCH[48/200]  ITER[6/14]                    TRAIN_LOSS : 0.6158885955810547
+03:15:01:     EPOCH[48/200]  ITER[7/14]                    TRAIN_LOSS : 0.6003144979476929
+03:15:01:     EPOCH[48/200]  ITER[8/14]                    TRAIN_LOSS : 0.5097048878669739
+03:15:15:     EPOCH[48/200]  ITER[9/14]                    TRAIN_LOSS : 0.6668904423713684
+03:15:15:     EPOCH[48/200]  ITER[10/14]                   TRAIN_LOSS : 0.6822305917739868
+03:15:15:     EPOCH[48/200]  ITER[11/14]                   TRAIN_LOSS : 0.5493077039718628
+03:15:15:     EPOCH[48/200]  ITER[12/14]                   TRAIN_LOSS : 0.5989468097686768
+03:15:29:     EPOCH[48/200]  ITER[13/14]                   TRAIN_LOSS : 0.6629650592803955
+03:15:29:     EPOCH[48/200]  ITER[14/14]                   TRAIN_LOSS : 0.7024391889572144
+03:15:29:     
+03:15:29:     TRAIN               EPOCH[48/200]       LOSS : 0.98464848   TOP1 : 0.6823       
+03:15:52:     VALIDATION          EPOCH[48/200]       LOSS : 0.59753109   TOP1 : 0.7064       
+03:17:02:     TEST                EPOCH[48/200]       LOSS : 0.65362514   TOP1 : 0.6276       
+03:17:02:     
+03:17:45:     EPOCH[49/200]  ITER[1/14]                    TRAIN_LOSS : 0.6280698776245117
+03:17:45:     EPOCH[49/200]  ITER[2/14]                    TRAIN_LOSS : 0.6009536981582642
+03:17:45:     EPOCH[49/200]  ITER[3/14]                    TRAIN_LOSS : 0.6397051811218262
+03:17:45:     EPOCH[49/200]  ITER[4/14]                    TRAIN_LOSS : 0.5981647968292236
+03:18:01:     EPOCH[49/200]  ITER[5/14]                    TRAIN_LOSS : 0.5950716733932495
+03:18:01:     EPOCH[49/200]  ITER[6/14]                    TRAIN_LOSS : 0.6209737062454224
+03:18:01:     EPOCH[49/200]  ITER[7/14]                    TRAIN_LOSS : 0.5969498157501221
+03:18:01:     EPOCH[49/200]  ITER[8/14]                    TRAIN_LOSS : 0.5306378602981567
+03:18:15:     EPOCH[49/200]  ITER[9/14]                    TRAIN_LOSS : 0.6502975821495056
+03:18:15:     EPOCH[49/200]  ITER[10/14]                   TRAIN_LOSS : 0.6553969383239746
+03:18:15:     EPOCH[49/200]  ITER[11/14]                   TRAIN_LOSS : 0.5494527816772461
+03:18:15:     EPOCH[49/200]  ITER[12/14]                   TRAIN_LOSS : 0.6075650453567505
+03:18:29:     EPOCH[49/200]  ITER[13/14]                   TRAIN_LOSS : 0.6608257293701172
+03:18:29:     EPOCH[49/200]  ITER[14/14]                   TRAIN_LOSS : 0.7440986633300781
+03:18:29:     
+03:18:29:     TRAIN               EPOCH[49/200]       LOSS : 0.97704779   TOP1 : 0.6827       
+03:18:52:     VALIDATION          EPOCH[49/200]       LOSS : 0.59470446   TOP1 : 0.7064       
+03:20:01:     TEST                EPOCH[49/200]       LOSS : 0.6571054    TOP1 : 0.6276       
+03:20:01:     
+03:20:43:     EPOCH[50/200]  ITER[1/14]                    TRAIN_LOSS : 0.603968620300293
+03:20:43:     EPOCH[50/200]  ITER[2/14]                    TRAIN_LOSS : 0.6121935248374939
+03:20:43:     EPOCH[50/200]  ITER[3/14]                    TRAIN_LOSS : 0.646298885345459
+03:20:43:     EPOCH[50/200]  ITER[4/14]                    TRAIN_LOSS : 0.5960174202919006
+03:20:59:     EPOCH[50/200]  ITER[5/14]                    TRAIN_LOSS : 0.5963989496231079
+03:20:59:     EPOCH[50/200]  ITER[6/14]                    TRAIN_LOSS : 0.63397216796875
+03:20:59:     EPOCH[50/200]  ITER[7/14]                    TRAIN_LOSS : 0.5784599781036377
+03:20:59:     EPOCH[50/200]  ITER[8/14]                    TRAIN_LOSS : 0.5223557949066162
+03:21:13:     EPOCH[50/200]  ITER[9/14]                    TRAIN_LOSS : 0.6240037679672241
+03:21:13:     EPOCH[50/200]  ITER[10/14]                   TRAIN_LOSS : 0.6626225709915161
+03:21:13:     EPOCH[50/200]  ITER[11/14]                   TRAIN_LOSS : 0.5392786264419556
+03:21:13:     EPOCH[50/200]  ITER[12/14]                   TRAIN_LOSS : 0.6103670597076416
+03:21:27:     EPOCH[50/200]  ITER[13/14]                   TRAIN_LOSS : 0.7035781145095825
+03:21:27:     EPOCH[50/200]  ITER[14/14]                   TRAIN_LOSS : 0.6569324731826782
+03:21:27:     
+03:21:27:     TRAIN               EPOCH[50/200]       LOSS : 0.96971945   TOP1 : 0.6829       
+03:21:50:     VALIDATION          EPOCH[50/200]       LOSS : 0.58788415   TOP1 : 0.7064       
+03:23:00:     TEST                EPOCH[50/200]       LOSS : 0.66108815   TOP1 : 0.6276       
+03:23:00:     
+03:23:42:     EPOCH[51/200]  ITER[1/14]                    TRAIN_LOSS : 0.6116389036178589
+03:23:42:     EPOCH[51/200]  ITER[2/14]                    TRAIN_LOSS : 0.5900791883468628
+03:23:42:     EPOCH[51/200]  ITER[3/14]                    TRAIN_LOSS : 0.6328450441360474
+03:23:42:     EPOCH[51/200]  ITER[4/14]                    TRAIN_LOSS : 0.6236777305603027
+03:23:59:     EPOCH[51/200]  ITER[5/14]                    TRAIN_LOSS : 0.6200007200241089
+03:23:59:     EPOCH[51/200]  ITER[6/14]                    TRAIN_LOSS : 0.6339980363845825
+03:23:59:     EPOCH[51/200]  ITER[7/14]                    TRAIN_LOSS : 0.6044859886169434
+03:23:59:     EPOCH[51/200]  ITER[8/14]                    TRAIN_LOSS : 0.5704855918884277
+03:24:14:     EPOCH[51/200]  ITER[9/14]                    TRAIN_LOSS : 0.6084074974060059
+03:24:14:     EPOCH[51/200]  ITER[10/14]                   TRAIN_LOSS : 0.5957139730453491
+03:24:14:     EPOCH[51/200]  ITER[11/14]                   TRAIN_LOSS : 0.5657386183738708
+03:24:14:     EPOCH[51/200]  ITER[12/14]                   TRAIN_LOSS : 0.5837998390197754
+03:24:27:     EPOCH[51/200]  ITER[13/14]                   TRAIN_LOSS : 0.6946684122085571
+03:24:27:     EPOCH[51/200]  ITER[14/14]                   TRAIN_LOSS : 0.65477055311203
+03:24:27:     
+03:24:27:     TRAIN               EPOCH[51/200]       LOSS : 0.96268684   TOP1 : 0.6832       
+03:24:51:     VALIDATION          EPOCH[51/200]       LOSS : 0.58818477   TOP1 : 0.7064       
+03:25:59:     TEST                EPOCH[51/200]       LOSS : 0.68817413   TOP1 : 0.6276       
+03:25:59:     
+03:26:41:     EPOCH[52/200]  ITER[1/14]                    TRAIN_LOSS : 0.5719509124755859
+03:26:41:     EPOCH[52/200]  ITER[2/14]                    TRAIN_LOSS : 0.5779904127120972
+03:26:41:     EPOCH[52/200]  ITER[3/14]                    TRAIN_LOSS : 0.6605629920959473
+03:26:41:     EPOCH[52/200]  ITER[4/14]                    TRAIN_LOSS : 0.5658358335494995
+03:26:57:     EPOCH[52/200]  ITER[5/14]                    TRAIN_LOSS : 0.5689808130264282
+03:26:57:     EPOCH[52/200]  ITER[6/14]                    TRAIN_LOSS : 0.6311455368995667
+03:26:57:     EPOCH[52/200]  ITER[7/14]                    TRAIN_LOSS : 0.6027714610099792
+03:26:58:     EPOCH[52/200]  ITER[8/14]                    TRAIN_LOSS : 0.552027702331543
+03:27:12:     EPOCH[52/200]  ITER[9/14]                    TRAIN_LOSS : 0.6268687844276428
+03:27:12:     EPOCH[52/200]  ITER[10/14]                   TRAIN_LOSS : 0.6336950063705444
+03:27:12:     EPOCH[52/200]  ITER[11/14]                   TRAIN_LOSS : 0.5470280647277832
+03:27:12:     EPOCH[52/200]  ITER[12/14]                   TRAIN_LOSS : 0.5939503908157349
+03:27:25:     EPOCH[52/200]  ITER[13/14]                   TRAIN_LOSS : 0.6516225934028625
+03:27:25:     EPOCH[52/200]  ITER[14/14]                   TRAIN_LOSS : 0.7412818670272827
+03:27:25:     
+03:27:25:     TRAIN               EPOCH[52/200]       LOSS : 0.95572802   TOP1 : 0.6834       
+03:27:49:     VALIDATION          EPOCH[52/200]       LOSS : 0.59745187   TOP1 : 0.7064       
+03:28:57:     TEST                EPOCH[52/200]       LOSS : 0.65423411   TOP1 : 0.6276       
+03:28:57:     
+03:28:57:     NO IMPROVEMENT IN THE LAST 51 EPOCHS: EARLY STOPPING AT EPOCH 51
+03:28:57:     AT EPOCH 0/200: BEST VAL ACCURACY: 0.70642202      TEST ACC : 0.0     TRAIN ACC : 0.57938389 
+03:28:57:     Training took 2.0h : 34.0m : 1.03s
+03:28:57:     Finish
