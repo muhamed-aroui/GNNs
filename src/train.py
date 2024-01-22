@@ -8,6 +8,10 @@ import torch.nn as nn
 import torch.optim as optim
 from utils import AverageMeter
 import torch.nn.functional as F
+from sklearn.metrics import roc_curve, auc, precision_recall_curve, average_precision_score, f1_score
+import matplotlib.pyplot as plt
+import sys
+import numpy as np
 
 
 class GModelTrainer:
@@ -102,7 +106,6 @@ class GModelTrainer:
         self.model.train()
         avg_loss = AverageMeter()
         avg_top1 = AverageMeter()
-        avg_top5 = AverageMeter()
         early_stopping_counter = 0
         for epoch in range(self.config["training_config"]["epoch"]):
             for batch_idx, input in enumerate(self.dataloaders["train"]):
@@ -144,6 +147,8 @@ class GModelTrainer:
     def evaluate(self, epoch):
         self.model.eval()
         acc = dict(test= 0.0 , validation=0.0)
+        all_output = []
+        all_target  = []
         if epoch >= self.config["validation_config"]["test_accuracy_log_epoch"]:
             phase_list = ["validation", "test"]
         else:
@@ -151,13 +156,18 @@ class GModelTrainer:
         for phase in phase_list:
             avg_loss = AverageMeter()
             avg_top1 = AverageMeter()
-            avg_top5 = AverageMeter()
             for _, input in enumerate(self.dataloaders[phase]):
                 input = input.to(self.device) 
                 out, loss_value = self._pass(input)
                 avg_loss.update(loss_value, input.num_graphs)
+                if phase =="test" and epoch == 149:
+                    all_output.append(torch.sigmoid(out.data).cpu().numpy())
+                    all_target.append(input.y.data.cpu().numpy())
                 top1 = self.cls_accuracy(output=out.data, target=input.y.data)
                 avg_top1.update(top1, input.num_graphs)
+            if phase =="test" and epoch == 149:
+                self.plot_roc_curve(np.concatenate(all_output),np.concatenate(all_target),epoch)
+                self.plot_precision_recall_curve(np.concatenate(all_output),np.concatenate(all_target),epoch)
             acc[phase] = avg_top1.value
             self._log_tensorboard(epoch=epoch, loss= avg_loss.value, top1 = avg_top1.value, phase=phase)
         self.model.train()
@@ -174,9 +184,41 @@ class GModelTrainer:
 
     @staticmethod
     def cls_accuracy(output, target):
-        output= torch.nn.functional.sigmoid(output)
+        output= torch.sigmoid(output)
         pred = output.round()
         correct = (pred == target).float().sum()
         accuracy = correct / target.size(0)
         return accuracy.item()
-    
+    @staticmethod
+    def plot_roc_curve(output, target, epoch):
+        fpr, tpr, _ = roc_curve(target, output)
+        roc_auc = auc(fpr, tpr)
+
+        plt.figure()
+        plt.plot(fpr, tpr, color='darkorange', lw=2, label=f'ROC curve (AUC = {roc_auc:.2f})')
+        plt.plot([0, 1], [0, 1], color='navy', lw=2, linestyle='--')
+        plt.xlim([0.0, 1.0])
+        plt.ylim([0.0, 1.05])
+        plt.xlabel('False Positive Rate')
+        plt.ylabel('True Positive Rate')
+        plt.title('Receiver Operating Characteristic (ROC) Curve')
+        plt.legend(loc="lower right")
+        plt.savefig(f'/users/Etu6/28718016/prat/GNNs/pretrained/roc{epoch}.png')
+        plt.close()
+
+    @staticmethod
+    def plot_precision_recall_curve(outputs, targets, epoch):
+        precision, recall, _ = precision_recall_curve(targets, outputs)
+        average_precision = average_precision_score(targets, outputs)
+        f1 = f1_score(targets, outputs.round())
+
+        plt.figure()
+        plt.step(recall, precision, color='b', alpha=0.2, where='post')
+        plt.fill_between(recall, precision, step='post', alpha=0.2, color='b')
+        plt.xlabel('Recall')
+        plt.ylabel('Precision')
+        plt.ylim([0.0, 1.05])
+        plt.xlim([0.0, 1.0])
+        plt.title('Precision-Recall Curve (AP = {0:.2f}), F1 = {1:.2f})'.format(average_precision,f1))
+        plt.savefig(f'/users/Etu6/28718016/prat/GNNs/pretrained/precision_recall_curve{epoch}.png')
+        plt.close()

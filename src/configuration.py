@@ -1,5 +1,5 @@
 training_config = dict(
-    epoch = 200,
+    epoch = 150,
     batch_size = 64,
     num_workers = 4,
     log_iter = 1
@@ -11,14 +11,15 @@ optim_config = dict(
 )
 
 validation_config = dict(
-    early_stopping_epoch    = 50,
+    early_stopping_epoch    = 150,
     test_accuracy_log_epoch = 1
 )
 
 model_config = dict(
-    layer_type     = "GCN",
+    layer_type     = "GATv2",
     embedding_size = 512,
     heads          = 4,
+    concatenate = True,
     dropout        = 0.6,
 )
 

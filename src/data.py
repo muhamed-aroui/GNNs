@@ -9,7 +9,7 @@ from sklearn.preprocessing import normalize
 from torch_geometric.loader import DataLoader
 from utils import get_contour_feats, directory_samples
 import logging
-
+import sys
 
 
 
@@ -37,7 +37,7 @@ class GraphDataset(Dataset):
             raise ValueError("no cells in the graph")
         
         for node_id, node_data in json_data['nuc'].items():
-            fused_embedding = [node_data['type_prob'],*node_data['centroid']]
+            fused_embedding = [node_data['type_prob'],node_data['type'],*node_data['centroid']]
 
             contour_feats = get_contour_feats(node_data['contour'])
             values_list = list(contour_feats.values())
@@ -45,6 +45,10 @@ class GraphDataset(Dataset):
             graph_features.append(fused_embedding)
             # Extracting edge information (if any)
             for neighbor_node_id, neighbor_node_data in json_data['nuc'].items():
+                dist=self._edge_feature_gen(node_data["centroid"],
+                                                     neighbor_node_data["centroid"])
+                if dist[0] > 150:
+                    continue
                 if node_id != neighbor_node_id:
                     if [int(node_id) - 1, int(neighbor_node_id) - 1] in edge_index:
                         continue
