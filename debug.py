@@ -18,9 +18,18 @@ import matplotlib.pyplot as plt
 # print("torch version: ", torch.__version__)
 
 fpath= "/users/Etu6/28718016/Data/BinaryClassification/test/json/"
+fpath= "/users/Etu6/28718016/mag400/train/"
 
-files= glob.glob(os.path.join(fpath,"*.json"))
+files= glob.glob(os.path.join(fpath,"*.png"))
+count=0
+for i,f in enumerate(files):
+    im =plt.imread(f)
+    if im.shape != (460, 700, 3):
+        count += 1
+
+print(count)
 print(len(files))
+sys.exit()
 newlist=[]
 for f in files:
     with open (f) as json_file:

@@ -91,8 +91,8 @@ class GModelTrainer:
         _loss = f"TRAIN_LOSS : {loss}"
         self.logger.info(f"{_epoch:15s}{_iter:30s}{_loss:20s}")
     
-    def _pass(self, data, phase="val"):
-        out = self.model(data.x, data.edge_index, data.batch)
+    def _pass(self, data, im_data, phase="val"):
+        out = self.model(data.x, data.edge_index, im_data, data.batch)
         out = out.squeeze()
         loss_value = self.criterion(out, data.y)
         if phase =="train":
@@ -108,10 +108,11 @@ class GModelTrainer:
         avg_top1 = AverageMeter()
         early_stopping_counter = 0
         for epoch in range(self.config["training_config"]["epoch"]):
-            for batch_idx, input in enumerate(self.dataloaders["train"]):
+            for batch_idx, (input,im_input) in enumerate(self.dataloaders["train"]):
                 # self.logger.info(pformat(input.x))
-                input = input.to(self.device) 
-                out, loss_value = self._pass(input, phase="train")
+                input = input.to(self.device)
+                im_input = im_input.to(self.device)
+                out, loss_value = self._pass(input, im_input, phase="train")
                 avg_loss.update(loss_value, input.num_graphs)
                 top1 = self.cls_accuracy(output=out.detach().cpu().data, target=input.y.detach().cpu().data)
                 avg_top1.update(top1, input.num_graphs)
@@ -156,9 +157,10 @@ class GModelTrainer:
         for phase in phase_list:
             avg_loss = AverageMeter()
             avg_top1 = AverageMeter()
-            for _, input in enumerate(self.dataloaders[phase]):
+            for _, (input,im_input) in enumerate(self.dataloaders[phase]):
                 input = input.to(self.device) 
-                out, loss_value = self._pass(input)
+                im_input = im_input.to(self.device)
+                out, loss_value = self._pass(input,im_input)
                 avg_loss.update(loss_value, input.num_graphs)
                 if phase =="test" and epoch == 149:
                     all_output.append(torch.sigmoid(out.data).cpu().numpy())
@@ -203,15 +205,21 @@ class GModelTrainer:
         plt.ylabel('True Positive Rate')
         plt.title('Receiver Operating Characteristic (ROC) Curve')
         plt.legend(loc="lower right")
-        plt.savefig(f'/users/Etu6/28718016/prat/GNNs/pretrained/roc{epoch}.png')
+        plt.savefig(f'/users/Etu6/28718016/prat/GNNs/pretrained/rocResnet{epoch}.png')
         plt.close()
+        try:
+            np.save(f'/users/Etu6/28718016/prat/GNNs/pretrained/fprResnet{epoch}.npy', fpr)
+            np.save(f'/users/Etu6/28718016/prat/GNNs/pretrained/tprResnet{epoch}.npy', tpr)
+        except Exception as e:
+            print(f"An error occurred in saving roc: {e}")
+
 
     @staticmethod
     def plot_precision_recall_curve(outputs, targets, epoch):
         precision, recall, _ = precision_recall_curve(targets, outputs)
         average_precision = average_precision_score(targets, outputs)
         f1 = f1_score(targets, outputs.round())
-
+        
         plt.figure()
         plt.step(recall, precision, color='b', alpha=0.2, where='post')
         plt.fill_between(recall, precision, step='post', alpha=0.2, color='b')
@@ -220,5 +228,11 @@ class GModelTrainer:
         plt.ylim([0.0, 1.05])
         plt.xlim([0.0, 1.0])
         plt.title('Precision-Recall Curve (AP = {0:.2f}), F1 = {1:.2f})'.format(average_precision,f1))
-        plt.savefig(f'/users/Etu6/28718016/prat/GNNs/pretrained/precision_recall_curve{epoch}.png')
+        plt.savefig(f'/users/Etu6/28718016/prat/GNNs/pretrained/precision_recall_Resnetcurve{epoch}.png')
         plt.close()
+        try:
+            np.save(f'/users/Etu6/28718016/prat/GNNs/pretrained/precisionResnet{epoch}.npy', precision)
+            np.save(f'/users/Etu6/28718016/prat/GNNs/pretrained/recallResnet{epoch}.npy', recall)
+        except Exception as e:
+            print(f"An error occurred in saving PR: {e}")
+

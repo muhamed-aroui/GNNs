@@ -10,21 +10,32 @@ from torch_geometric.loader import DataLoader
 from utils import get_contour_feats, directory_samples
 import logging
 import sys
+import os
+import matplotlib.pyplot as plt
+from PIL import Image
+from torchvision.io import read_image
+from torchvision.models import ResNet18_Weights
 
 
 
 class GraphDataset(Dataset):
-    def __init__(self, root, transform=None,config = False):
+    def __init__(self, root, transform=None,config = False,tf=None):
         super().__init__(root, transform,)
         self.root = Path(root)
         self.transform = transform
+        self.tf= tf
         self.config = config
+        self.imroot = "/users/Etu6/28718016/mag400/train/"
     @property
     def raw_files_paths(self):
         return [s for s in self.root.iterdir()]
 
     def _process_data(self, idx):
-
+        filename=os.path.basename(self.raw_files_paths[idx])
+        filename = os.path.splitext(filename)[0] + ".png"
+        image_file = os.path.join(self.imroot, filename)
+        #image_data = read_image(image_file)
+        image_data = Image.open(image_file)
         with open (self.raw_files_paths[idx]) as json_file:
             json_data= json.load(json_file)
         
@@ -74,7 +85,7 @@ class GraphDataset(Dataset):
                           edge_index=edge_index.t().contiguous(),
                           edge_attr=torch.tensor(edge_features, dtype=torch.float),
                           y = torch.tensor(json_data["label_int"], dtype=torch.float))
-        return graph_data
+        return graph_data, image_data
     
     @staticmethod
     def _edge_feature_gen(center1, center2):
@@ -87,10 +98,13 @@ class GraphDataset(Dataset):
         return len(self.raw_files_paths)
 
     def get(self, idx):
-        data = self._process_data(idx)
+        graph_data, image_data = self._process_data(idx)
+        image_data = self.tf(image_data)
         if self.transform:
-            data = self.transform(data)
-        return data
+            image_data = self.transform(image_data)
+            #graph_data = self.transform(graph_data)
+            
+        return graph_data,image_data
 
 def get_data(config, logger):
     train_samples = directory_samples(config["data_config"]["db_root"])
@@ -105,10 +119,12 @@ def get_data(config, logger):
     #     "test": test_classes,
     #     "validation": validation_classes
     # }
-
-    train_dataset = GraphDataset(root=config["data_config"]["db_root"], config=config)
-    test_dataset = GraphDataset(root=config["data_config"]["test_root"], config=config)
-    validation_dataset = GraphDataset(root=config["data_config"]["validation_root"], config=config)
+    weights = ResNet18_Weights.DEFAULT
+    transforms = weights.transforms()
+    train_dataset = GraphDataset(root=config["data_config"]["db_root"], config=config,tf=transforms)
+    temp_data = next(iter(train_dataset))
+    test_dataset = GraphDataset(root=config["data_config"]["test_root"], config=config,tf=transforms)
+    validation_dataset = GraphDataset(root=config["data_config"]["validation_root"], config=config,tf=transforms)
     dataloaders = {
         x:DataLoader(dataset, 
                batch_size=config["training_config"]["batch_size"], 
@@ -116,9 +132,10 @@ def get_data(config, logger):
                pin_memory=True)
         for x, dataset in [("train", train_dataset), ("validation", validation_dataset), ("test", test_dataset)]
     }
+
     temp_data = next(iter(validation_dataset))
     
-    return dataloaders , temp_data.x.shape[1]
+    return dataloaders , temp_data[0].x.shape[1]
 
 if __name__ == "__main__":
     print("here")

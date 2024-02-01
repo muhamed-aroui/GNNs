@@ -11,12 +11,12 @@ optim_config = dict(
 )
 
 validation_config = dict(
-    early_stopping_epoch    = 150,
+    early_stopping_epoch    = 155,
     test_accuracy_log_epoch = 1
 )
 
 model_config = dict(
-    layer_type     = "GATv2",
+    layer_type     = "Resnet",
     embedding_size = 512,
     heads          = 4,
     concatenate = True,
